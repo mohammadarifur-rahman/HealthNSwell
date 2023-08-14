@@ -6,6 +6,7 @@ services:
     environment:
       CORS_HOST: http://localhost:3000
       DATABASE_URL: postgresql://example_user:secret@db/example
+      SIGNING_KEY: 764x4xdrgjie9277klk2tx32glwcblec3xar23b5
       WAIT_HOSTS: db:5432
       PORT: 8000
     build:
