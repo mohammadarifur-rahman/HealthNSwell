@@ -1,4 +1,4 @@
-from typing import Optional, Union
+from typing import Optional, Union, List
 from queries.pool import pool
 from models.accounts import AccountIn, AccountOut, Error, AccountOutWithPassword
 
@@ -54,6 +54,7 @@ class AccountRepository:
                 )
                 id = result.fetchone()[0]
                 return self.account_in_to_out(id, account)
+
     def update(
         self, account_id: int, account: AccountIn, hashed_password: str
     ) -> Union[AccountOutWithPassword, Error]:
@@ -89,6 +90,57 @@ class AccountRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not update account"}
+
+    def delete(self, account_id: int) -> bool:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM accounts
+                        WHERE id = %s
+                        """,
+                        [account_id],
+                    )
+                    return True
+        except Exception as e:
+            print(e)
+            return False
+
+    def get_all(self) -> Union[Error, List[AccountOut]]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        SELECT id
+                        , email
+                        , first_name
+                        , last_name
+                        , height
+                        , weight
+                        , age
+                        , sex
+                        FROM accounts
+                        ORDER BY id;
+                        """
+                    )
+                    return [
+                        AccountOut(
+                            id=record[0],
+                            email=record[1],
+                            first_name=record[2],
+                            last_name=record[3],
+                            height=record[4],
+                            weight=record[5],
+                            age=record[6],
+                            sex=record[7],
+                        )
+                        for record in db
+                    ]
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get all accounts"}
 
 
     def account_in_to_out(self, id: int, account: AccountIn):
