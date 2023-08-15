@@ -7,7 +7,7 @@ from fastapi import (
     Request,
 )
 from jwtdown_fastapi.authentication import Token
-from typing import List, Union, Optional
+from typing import Union, Optional, List
 from authenticator import authenticator
 from pydantic import BaseModel
 from models.accounts import (
@@ -67,6 +67,7 @@ async def create_account(
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
 
+
 @router.put("/{account_id}/", response_model=Union[AccountOut, Error])
 async def update_accounts(
     info: AccountIn,
@@ -77,3 +78,34 @@ async def update_accounts(
     if account_data:
         hashed_password = authenticator.hash_password(info.password)
         return repo.update(account_id, info, hashed_password)
+
+
+@router.delete("/{account_id}/", response_model=bool)
+async def delete_account(
+    account_id: int,
+    repo: AccountRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+) -> bool:
+    # only allow users to delete their own accounts?
+    if account_data:
+        return repo.delete(account_id)
+
+
+@router.get("/{email}/", response_model=Optional[AccountOut])
+async def get_one(
+    email: str,
+    repo: AccountRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+) -> AccountOut:
+    if account_data:
+        account = repo.get_one(email)
+        return account
+
+
+@router.get("/", response_model=Union[List[AccountOut], Error])
+async def get_all(
+    repo: AccountRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    if account_data:
+        return repo.get_all()
