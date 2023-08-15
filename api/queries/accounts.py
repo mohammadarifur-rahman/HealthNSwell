@@ -54,6 +54,42 @@ class AccountRepository:
                 )
                 id = result.fetchone()[0]
                 return self.account_in_to_out(id, account)
+    def update(
+        self, account_id: int, account: AccountIn, hashed_password: str
+    ) -> Union[AccountOutWithPassword, Error]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE accounts
+                        SET email = %s
+                        , first_name = %s
+                        , last_name = %s
+                        , height = %s
+                        , weight = %s
+                        , age = %s
+                        , sex = %s
+                        , hashed_password = %s
+                        WHERE id = %s
+                        """,
+                        [
+                            account.email,
+                            account.first_name,
+                            account.last_name,
+                            account.height,
+                            account.weight,
+                            account.age,
+                            account.sex,
+                            hashed_password,
+                            account_id,
+                        ],
+                    )
+                    return self.account_in_to_out(account_id, account)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not update account"}
+
 
     def account_in_to_out(self, id: int, account: AccountIn):
         old_data = account.dict()

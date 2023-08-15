@@ -66,3 +66,14 @@ async def create_account(
     form = AccountForm(username=info.email, password=info.password)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
+
+@router.put("/{account_id}/", response_model=Union[AccountOut, Error])
+async def update_accounts(
+    info: AccountIn,
+    account_id: int,
+    repo: AccountRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+) -> Union[Error, AccountOut]:
+    if account_data:
+        hashed_password = authenticator.hash_password(info.password)
+        return repo.update(account_id, info, hashed_password)
