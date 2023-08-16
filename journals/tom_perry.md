@@ -3,6 +3,8 @@
 List of features
 
 - Created all workout endpoints with auth.
+- Created all exercise endpoints with auth.
+- Added API_Design_Template.excalidraw.
 
 Ah-ha
 Flushed out a effecient way to test endpoint in fastapi.
