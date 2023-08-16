@@ -5,6 +5,8 @@ List of features
 - Created all workout endpoints with auth.
 - Created all exercise endpoints with auth.
 - Added API_Design_Template.excalidraw.
+- Configure project pd-admin
+- Fix migrations files by adding a file for each table
 
 Ah-ha
 Flushed out a effecient way to test endpoint in fastapi.
