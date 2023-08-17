@@ -1,3 +1,15 @@
+## 17 Aug 2023
+
+List of features
+
+- Created project homepage.
+- Created component templates.
+- Installed react-router-dom, bootstrap, and bootstrap icons.
+- Configured App.js routes and paths.
+
+Ah-ha
+We can download bootstrap icons!
+
 ## 16 Aug 2023
 
 List of features

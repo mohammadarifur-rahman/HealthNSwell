@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 
 function AccountForm(props) {
-    return {
-
-    };
+  return;
 }
 
 export default AccountForm;
