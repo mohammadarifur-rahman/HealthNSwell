@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Home from "./components/Home";
 import AccountForm from "./components/AccountForm";
 import LoginForm from "./components/LoginForm";
@@ -7,11 +6,16 @@ import EditAccount from "./components/EditAccount";
 import WorkoutList from "./components/WorkoutList";
 import CreateWorkout from "./components/CreateWorkout";
 import ViewWorkout from "./components/ViewWorkout";
+import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+  const baseUrl = process.env.REACT_APP_API_HOST;
+
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter basename={basename}>
+      <AuthProvider baseUrl={baseUrl}>
         <Routes>
           <Route path="/" element={<Home />} />
 
@@ -27,8 +31,8 @@ function App() {
             <Route path="view" element={<ViewWorkout />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

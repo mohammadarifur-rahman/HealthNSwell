@@ -48,7 +48,7 @@ async def get_token(
         }
 
 
-@router.post("/", response_model=AccountToken | HttpError)
+@router.post("/api/accounts/", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
     request: Request,
@@ -68,7 +68,7 @@ async def create_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.put("/{account_id}/", response_model=Union[AccountOut, Error])
+@router.put("/api/accounts/{account_id}/", response_model=Union[AccountOut, Error])
 async def update_accounts(
     info: AccountIn,
     account_id: int,
@@ -80,18 +80,17 @@ async def update_accounts(
         return repo.update(account_id, info, hashed_password)
 
 
-@router.delete("/{account_id}/", response_model=bool)
+@router.delete("/api/accounts/{account_id}/", response_model=bool)
 async def delete_account(
     account_id: int,
     repo: AccountRepository = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
-    # only allow users to delete their own accounts?
     if account_data:
         return repo.delete(account_id)
 
 
-@router.get("/{email}/", response_model=Optional[AccountOut])
+@router.get("/api/accounts/{email}/", response_model=Optional[AccountOut])
 async def get_one(
     email: str,
     repo: AccountRepository = Depends(),
@@ -102,7 +101,7 @@ async def get_one(
         return account
 
 
-@router.get("/", response_model=Union[List[AccountOut], Error])
+@router.get("/api/accounts/", response_model=Union[List[AccountOut], Error])
 async def get_all(
     repo: AccountRepository = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),

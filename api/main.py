@@ -6,7 +6,7 @@ import os
 
 
 app = FastAPI()
-app.include_router(accounts.router, prefix="/api/accounts")
+app.include_router(accounts.router)
 app.include_router(workouts.router, prefix="/api/workouts")
 app.include_router(exercises.router, prefix="/api/exercises")
 app.include_router(authenticator.router)
