@@ -1,3 +1,14 @@
+## 21 Aug 2023
+
+List of features
+
+- Created Account Sign up functionality.
+- Refactored log in form and fixed the Account Models to use optional fields.
+- Added css for the Account Sign up form.
+
+Ah-ha
+We figured out to stay logged in after the account creation!
+
 ## 17 Aug 2023
 
 List of features
@@ -6,6 +17,8 @@ List of features
 - Created component templates.
 - Installed react-router-dom, bootstrap, and bootstrap icons.
 - Configured App.js routes and paths.
+- Refactor backend to use frontend authentication
+- Create login form functionality
 
 Ah-ha
 We can download bootstrap icons!

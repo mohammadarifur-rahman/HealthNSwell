@@ -59,6 +59,7 @@ h1, h2, h3 {
     font-size: 13px;
     font-weight:bolder;
     padding: 10px 30px;
+    transition: all 300ms ease-in-out;
  }
 
 .btn:hover {
@@ -177,3 +178,89 @@ h1, h2, h3 {
  .testimonial .card:hover{
    color:#000000;
  }
+
+ /*----- Account login ------*/
+
+ #login {
+   background-image: url("https://images.pexels.com/photos/841134/pexels-photo-841134.jpeg");
+   height: 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: fixed;
+   width: 100%;
+   left:0;
+   overflow-y: scroll;
+   overflow-x: hidden;
+ }
+
+.card-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin: 20px auto;
+   border-radius: 0px;
+   width: 40%;
+   opacity: 0.9;
+   border: 0.5px rgb(255, 255, 255) solid;
+   background-color: black;
+   color: #fff;
+   padding: 40px 0;
+   }
+
+
+.form-control {
+    border-radius: 0px;
+    height: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.btn-login-page {
+   width: 100%;
+   background-color: #dc5800;
+   color:#fff;
+ }
+
+.login-header {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   margin: 20px auto;
+   padding: 0 20px;
+}
+
+.login-header .bi {
+   font-size: 80px;
+   color:#fff;
+   position: relative;
+}
+
+.login-middle {
+   padding: 0 20px;
+}
+
+.login-middle form {
+   padding: 0 40px;
+   width: 100%;
+}
+
+.login-footer {
+   padding: 0 20px;
+}
+
+.login-middle-row {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 10px;
+   width: 100%;
+   justify-items: center;
+}
+
+.account-submit {
+   width: 60%;
+   grid-area: 3 / 1 / 3 / -1;
+}

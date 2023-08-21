@@ -16,12 +16,12 @@ function NavSignUp() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto">
                             <li>
-                                <form action="#">
+                                <form action="/accounts">
                                     <button className="btn-sign" type="submit">Sign in</button>
                                 </form>
                             </li>
                             <li>
-                                <form action="#">
+                                <form action="/accounts/signup">
                                     <button className="btn" type="submit">Join Now</button>
                                 </form>
                             </li>

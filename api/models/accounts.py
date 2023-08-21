@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class DuplicateAccountError(ValueError):
@@ -14,10 +15,10 @@ class AccountIn(BaseModel):
     password: str
     first_name: str
     last_name: str
-    height: int
-    weight: int
-    age: int
-    sex: str
+    height: Optional[int]
+    weight: Optional[int]
+    age: Optional[int]
+    sex: Optional[str]
 
 
 class AccountOut(BaseModel):
@@ -25,10 +26,10 @@ class AccountOut(BaseModel):
     email: str
     first_name: str
     last_name: str
-    height: int
-    weight: int
-    age: int
-    sex: str
+    height: Optional[int]
+    weight: Optional[int]
+    age: Optional[int]
+    sex: Optional[int]
 
 
 class AccountOutWithPassword(AccountOut):
