@@ -9,7 +9,7 @@ class Error(BaseModel):
 class WorkoutIn(BaseModel):
     name: str
     description: str
-    duration: Optional[int]
+    duration: Optional[str]
     activity_name: Optional[str]
     account: int
 
@@ -18,6 +18,6 @@ class WorkoutOut(BaseModel):
     id: int
     name: str
     description: str
-    duration: Optional[int]
+    duration: Optional[str]
     activity_name: Optional[str]
     account: int

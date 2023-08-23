@@ -6,7 +6,7 @@ steps = [
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(1000) NOT NULL,
             description VARCHAR(1000) NOT NULL,
-            duration INT,
+            duration VARCHAR(1000),
             activity_name VARCHAR(1000),
             account INT REFERENCES ACCOUNTS(id) ON DELETE CASCADE
         );
