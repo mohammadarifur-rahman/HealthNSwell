@@ -1,3 +1,13 @@
+## 22-23 Aug 2023
+
+List of features
+
+- Created Edit and delete Account functionality.
+- Added css for the Edit Account form.
+
+Ah-ha
+Learned to update account requiring token!
+
 ## 21 Aug 2023
 
 List of features

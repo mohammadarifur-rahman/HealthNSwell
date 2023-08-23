@@ -29,7 +29,7 @@ class AccountOut(BaseModel):
     height: Optional[int]
     weight: Optional[int]
     age: Optional[int]
-    sex: Optional[int]
+    sex: Optional[str]
 
 
 class AccountOutWithPassword(AccountOut):
