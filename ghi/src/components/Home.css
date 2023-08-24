@@ -271,3 +271,26 @@ h3 {
   background-color: rgb(50, 124, 73);
   color: #fff;
 }
+
+.dropdown:hover > .dropdown-menu {
+  font-size: 13px;
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+
+.alert-danger {
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  padding: 2px 20px;
+  background-color: rgb(122, 8, 10);
+}
+
+.nav-link,
+.nav-link:hover {
+  color: #fff;
+}

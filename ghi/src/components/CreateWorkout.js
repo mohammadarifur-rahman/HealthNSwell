@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavSignUp from "./NavSignUp";
+import NavLogIn from "./NavLogIn";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 function BootstrapInput(props) {
@@ -57,7 +57,7 @@ function WorkoutForm() {
   };
   return (
     <div id="login">
-      <NavSignUp />
+      <NavLogIn />
       <div className="card-form">
         <div className="login-header">
           <i className="bi bi-person-circle"></i>
@@ -71,7 +71,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="workoutname"
-              placeholder="workoutname"
+              placeholder="Beginner Full Body Circuit"
               labelText="Workout name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -81,7 +81,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="description"
-              placeholder="description"
+              placeholder="Warm-up, Circuit & Cooldown "
               labelText="Workout description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -91,7 +91,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="workoutduration"
-              placeholder="workoutduration"
+              placeholder="1hr 15mins"
               labelText="Workout duration"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
@@ -101,7 +101,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="activityname"
-              placeholder="activityname"
+              placeholder="Full Body Circuit"
               labelText="Activity name"
               value={activity_name}
               onChange={(e) => setActivityName(e.target.value)}
@@ -117,14 +117,6 @@ function WorkoutForm() {
             />
           </div>
         </form>
-        <div className="login-header login-footer">
-          <p>Already have an Account?</p>
-          <form action="/accounts">
-            <button className="btn btn-sing-up" type="submit">
-              Sign in
-            </button>
-          </form>
-        </div>
       </div>
     </div>
   );
