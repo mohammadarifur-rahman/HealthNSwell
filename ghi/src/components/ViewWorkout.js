@@ -53,6 +53,7 @@ function ViewWorkout() {
     const response = await fetch(url, fetchOptions);
     if (response.ok) {
       console.log(response);
+      setEditWorkout(false);
     }
   };
   // ---------------------------------------------
@@ -60,80 +61,54 @@ function ViewWorkout() {
   return (
     <>
     {/* ------ if edit workout is true ------ */}
-      <form>
+    {/* onMouseEnter={() => setEditWorkout(true)} onMouseLeave={() => setEditWorkout(false)}  */}
         <div className="mx-5 mb-4 mt-4">
           {/* ------ edit workout name------ */}
+          <form className="border border-secondary rounded-5 w-50 pt-3 px-3">
           <div className="input-group">
             { editWorkout ?
             <>
-            <input type="text" className="form-control bg-white"
+            <input type="text" className="ms-5 form-control text-center text-dark fs-3 bg-secondary bg-opacity-25 rounded-5"
             placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)}
             value={workoutName} id="workoutName" />
             <div className="input-group-append">
-              <i onClick={(e) => handleEditWorkout(e)}
-              className="bi bi-check-circle fs-2 ms-2"></i>
+              <span onClick={(e) => handleEditWorkout(e)}
+              className="bi bi-check-circle fs-2 ms-2 text-success"></span>
               <i onClick={() => setEditWorkout(false)}
-              className="bi bi-x-circle fs-2 ms-2"></i>
+              className="bi bi-x-circle fs-2 ms-2 text-danger"></i>
             </div>
             </>
             :
             <>
-            <input type="text" className="form-control bg-white"
+            <input type="text" className="ms-5 form-control text-center bg-white rounded-5 fs-3"
             placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)}
             value={workoutName} id="workoutName" disabled/>
             <div className="input-group-append">
               <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
+              <i className="bi bi-pencil fs-2 ms-2 opacity-0"></i>
             </div>
             </>
             }
           </div>
-          {/* ------ edit workout activity name------ */}
+          {/* ------ edit workout activity name and duration ------ */}
           <div className="input-group">
             { editWorkout ?
             <>
-            <input type="text" className="form-control bg-white"
+            <input type="text" className="form-control text-center text-dark fs-4 bg-secondary bg-opacity-25 rounded-5 me-4"
             placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
             value={workoutActivityName} id="workoutActivityName" />
-            <div className="input-group-append">
-              <i onClick={(e) => handleEditWorkout(e)}
-              className="bi bi-check-circle fs-2 ms-2"></i>
-              <i onClick={() => setEditWorkout(false)}
-              className="bi bi-x-circle fs-2 ms-2"></i>
-            </div>
-            </>
-            :
-            <>
-            <input type="text" className="form-control bg-white"
-            placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
-            value={workoutActivityName} id="workoutActivityName" disabled/>
-            <div className="input-group-append">
-              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
-            </div>
-            </>
-            }
-          </div>
-          {/* ------ edit workout duration ------ */}
-          <div className="input-group">
-            { editWorkout ?
-            <>
-            <input type="text" className="form-control bg-white"
+            <input type="text" className="form-control text-center text-dark fs-4 bg-secondary bg-opacity-25 rounded-5"
             placeholder={workout.duration} onChange={(e) => setWorkoutDuration(e.target.value)}
             value={workoutDuration} id="workoutDuration" />
-            <div className="input-group-append">
-              <i onClick={(e) => handleEditWorkout(e)}
-              className="bi bi-check-circle fs-2 ms-2"></i>
-              <i onClick={() => setEditWorkout(false)}
-              className="bi bi-x-circle fs-2 ms-2"></i>
-            </div>
             </>
             :
             <>
-            <input type="text" className="form-control bg-white"
+            <input type="text" className="form-control text-center bg-white rounded-5 fs-4 me-4"
+            placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
+            value={workoutActivityName} id="workoutActivityName" disabled/>
+            <input type="text" className="form-control text-center bg-white rounded-5 fs-4"
             placeholder={workout.duration} onChange={(e) => setWorkoutDuration(e.target.value)}
             value={workoutDuration} id="workoutDuration" disabled/>
-            <div className="input-group-append">
-              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
-            </div>
             </>
             }
           </div>
@@ -141,30 +116,21 @@ function ViewWorkout() {
           <div className="input-group">
             { editWorkout ?
             <>
-            <input type="text" className="form-control bg-white"
-            placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)}
-            value={workoutDescription} id="workoutDescription" />
-            <div className="input-group-append">
-              <i onClick={(e) => handleEditWorkout(e)}
-              className="bi bi-check-circle fs-2 ms-2"></i>
-              <i onClick={() => setEditWorkout(false)}
-              className="bi bi-x-circle fs-2 ms-2"></i>
-            </div>
+            <textarea type="text" className="form-control text-center text-dark fs-5 bg-secondary bg-opacity-25 rounded-5 h-100"
+            placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)} rows="3"
+            value={workoutDescription} id="workoutDescription"></textarea>
             </>
             :
             <>
-            <input type="text" className="form-control bg-white"
+            <textarea type="text" className="form-control text-center bg-white rounded-5 fs-5 h-100"
             placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)}
-            value={workoutDescription} id="workoutDescription" disabled/>
-            <div className="input-group-append">
-              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
-            </div>
+            value={workoutDescription} id="workoutDescription" rows="3" disabled></textarea>
             </>
             }
           </div>
-
+        </form>
         </div>
-      </form>
+
     </>
   );
 }
