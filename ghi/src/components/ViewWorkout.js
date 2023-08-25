@@ -73,7 +73,7 @@ function ViewWorkout() {
     <>
       {editWorkout ? (
         <>
-          {/* ------ if edit workout is true ------ */}
+          {/* ------ START OF if edit workout is true ------ */}
             <form>
               <div className="mx-5">
                 <BootstrapInput
@@ -107,26 +107,49 @@ function ViewWorkout() {
 
             <i onClick={(e) => handleEditWorkout(e)} className="bi bi-check-circle fs-2 ms-5"></i>
             <i onClick={() => setEditWorkout(false)} className="bi bi-x-circle fs-2 ms-2"></i>
+          {/* ------ END OF if edit workout is true ------ */}
         </>
       ) : (
         <>
-          {/* ------ if edit workout is false ------ */}
-          <h1 className="m-5">
-            Name: {workout.name}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </h1>
-          <h2 className="m-5">
-            Activity: {workout.activity_name}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </h2>
-          <h2 className="m-5">
-            Duration: {workout.duration}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </h2>
-          <p className="m-5">
-            description: {workout.description}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </p>
+          {/* ------ START OF if edit workout is false ------ */}
+            <form className="">
+              <div className="mx-5 mb-4 mt-4">
+              <div className="input-group">
+                <input type="text" className="form-control bg-white" placeholder={workout.name} disabled/>
+                <div className="input-group-append">
+                  <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2"></i>
+                </div>
+              </div>
+              </div>
+
+              <div className="mx-5 mb-4 mt-4">
+              <div className="input-group">
+                <input type="text" className="form-control bg-white" placeholder={workout.duration} disabled/>
+                <div className="input-group-append">
+                  <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2"></i>
+                </div>
+              </div>
+              </div>
+
+              <div className="mx-5 mb-4 mt-4">
+              <div className="input-group">
+                <input type="text" className="form-control bg-white" placeholder={workout.activity_name} disabled/>
+                <div className="input-group-append">
+                  <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2"></i>
+                </div>
+              </div>
+              </div>
+
+              <div className="mx-5 mb-4 mt-4">
+              <div className="input-group">
+                <input type="text" className="form-control bg-white" placeholder={workout.description} disabled/>
+                <div className="input-group-append">
+                  <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2"></i>
+                </div>
+              </div>
+              </div>
+            </form>
+            {/* ------ END OF if edit workout is false ------ */}
         </>
       )}
     </>
