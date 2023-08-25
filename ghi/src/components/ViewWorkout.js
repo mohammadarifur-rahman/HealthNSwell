@@ -52,20 +52,22 @@ function ViewWorkout() {
     const response = await fetch(url, fetchOptions);
     if (response.ok) {
       console.log(response);
+      setEditWorkout(false);
     }
   };
   // ------------- END OF put request to workout -------------
 
 // ------------- START OF bootstrap input form -------------
 function BootstrapInput (props) {
-const { placeholder, editable } = props;
+const { placeholder, editable, onChange, value, id } = props;
 
 if (editable) {
   return (
     <div className="mx-5 mb-4 mt-4">
       <div className="input-group">
         <input type="text" className="form-control bg-white"
-        placeholder={placeholder} />
+        placeholder={placeholder} onChange={onChange}
+        value={value} id={id}/>
         <div className="input-group-append">
           <i onClick={(e) => handleEditWorkout(e)}
           className="bi bi-check-circle fs-2 ms-2"></i>
@@ -80,7 +82,7 @@ if (editable) {
       <div className="mx-5 mb-4 mt-4">
         <div className="input-group">
           <input type="text" className="form-control bg-white"
-          placeholder={placeholder} />
+          placeholder={placeholder} disabled />
           <div className="input-group-append">
             <i onClick={() => setEditWorkout(true)}
             className="bi bi-pencil fs-2 ms-2"></i>
@@ -98,10 +100,21 @@ if (editable) {
         <>
           {/* ------ START OF if edit workout is true ------ */}
             <form className="">
-              <BootstrapInput placeholder={workout.name} editable={true} />
-              <BootstrapInput placeholder={workout.activity_name} editable={true} />
-              <BootstrapInput placeholder={workout.duration} editable={true} />
-              <BootstrapInput placeholder={workout.description} editable={true} />
+              <BootstrapInput placeholder={workout.name} editable={true}
+                id="workoutName" value={workoutName}
+                onChange={(e) => setWorkoutName(e.target.value)} />
+
+              <BootstrapInput placeholder={workout.activity_name} editable={true}
+                id="workoutActivityName" value={workoutActivityName}
+                onChange={(e) => setWorkoutActivityName(e.target.value)} />
+
+              <BootstrapInput placeholder={workout.duration} editable={true}
+                id="workoutDuration" value={workoutDuration}
+                onChange={(e) => setWorkoutDuration(e.target.value)} />
+
+              <BootstrapInput placeholder={workout.description} editable={true}
+                id="workoutDescription" value={workoutDescription}
+                onChange={(e) => setWorkoutDescription(e.target.value)} />
             </form>
           {/* ------ END OF if edit workout is true ------ */}
         </>
@@ -109,7 +122,7 @@ if (editable) {
         <>
           {/* ------ START OF if edit workout is false ------ */}
             <form className="">
-              <BootstrapInput placeholder={workout.name} editable={false} />
+              <BootstrapInput placeholder={workout.name} editable={false}/>
               <BootstrapInput placeholder={workout.activity_name} editable={false} />
               <BootstrapInput placeholder={workout.duration} editable={false} />
               <BootstrapInput placeholder={workout.description} editable={false} />
