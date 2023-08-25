@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 
 
-// ------------- START OF view workout function -------------
+// ------------- view workout function -------------
 function ViewWorkout() {
   const [workout, setWorkout] = useState("");
   const [editWorkout, setEditWorkout] = useState(false);
@@ -11,8 +11,9 @@ function ViewWorkout() {
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [workoutActivityName, setWorkoutActivityName] = useState("");
   const { token } = useToken();
+  // ---------------------------------------------
 
-  // ------------- START OF get request for workout -------------
+  // ------------- get request for workout -------------
   const getWorkout = async (e) => {
       // do not hardcode id
     const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/3/`;
@@ -27,9 +28,9 @@ function ViewWorkout() {
   useEffect(() => {
     getWorkout();
   }, []);
-  // ------------- END OF get request for workout -------------
+  // ---------------------------------------------
 
-  // ------------- START OF put request to workout -------------
+  // ------------- put request to workout -------------
   const handleEditWorkout = async (e) => {
     e.preventDefault();
     const data = {};
@@ -52,84 +53,118 @@ function ViewWorkout() {
     const response = await fetch(url, fetchOptions);
     if (response.ok) {
       console.log(response);
-      setEditWorkout(false);
     }
   };
-  // ------------- END OF put request to workout -------------
-
-// ------------- START OF bootstrap input form -------------
-function BootstrapInput (props) {
-const { placeholder, editable, onChange, value, id } = props;
-
-if (editable) {
-  return (
-    <div className="mx-5 mb-4 mt-4">
-      <div className="input-group">
-        <input type="text" className="form-control bg-white"
-        placeholder={placeholder} onChange={onChange}
-        value={value} id={id}/>
-        <div className="input-group-append">
-          <i onClick={(e) => handleEditWorkout(e)}
-          className="bi bi-check-circle fs-2 ms-2"></i>
-          <i onClick={() => setEditWorkout(false)}
-          className="bi bi-x-circle fs-2 ms-2"></i>
-        </div>
-      </div>
-    </div>
-    );
-  } else {
-    return (
-      <div className="mx-5 mb-4 mt-4">
-        <div className="input-group">
-          <input type="text" className="form-control bg-white"
-          placeholder={placeholder} disabled />
-          <div className="input-group-append">
-            <i onClick={() => setEditWorkout(true)}
-            className="bi bi-pencil fs-2 ms-2"></i>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-// ------------- END OF bootstrap input form -------------
+  // ---------------------------------------------
 
   return (
     <>
-      {editWorkout ? (
-        <>
-          {/* ------ START OF if edit workout is true ------ */}
-            <form className="">
-              <BootstrapInput placeholder={workout.name} editable={true}
-                id="workoutName" value={workoutName}
-                onChange={(e) => setWorkoutName(e.target.value)} />
+    {/* ------ if edit workout is true ------ */}
+      <form>
+        <div className="mx-5 mb-4 mt-4">
+          {/* ------ edit workout name------ */}
+          <div className="input-group">
+            { editWorkout ?
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)}
+            value={workoutName} id="workoutName" />
+            <div className="input-group-append">
+              <i onClick={(e) => handleEditWorkout(e)}
+              className="bi bi-check-circle fs-2 ms-2"></i>
+              <i onClick={() => setEditWorkout(false)}
+              className="bi bi-x-circle fs-2 ms-2"></i>
+            </div>
+            </>
+            :
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)}
+            value={workoutName} id="workoutName" disabled/>
+            <div className="input-group-append">
+              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
+            </div>
+            </>
+            }
+          </div>
+          {/* ------ edit workout activity name------ */}
+          <div className="input-group">
+            { editWorkout ?
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
+            value={workoutActivityName} id="workoutActivityName" />
+            <div className="input-group-append">
+              <i onClick={(e) => handleEditWorkout(e)}
+              className="bi bi-check-circle fs-2 ms-2"></i>
+              <i onClick={() => setEditWorkout(false)}
+              className="bi bi-x-circle fs-2 ms-2"></i>
+            </div>
+            </>
+            :
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
+            value={workoutActivityName} id="workoutActivityName" disabled/>
+            <div className="input-group-append">
+              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
+            </div>
+            </>
+            }
+          </div>
+          {/* ------ edit workout duration ------ */}
+          <div className="input-group">
+            { editWorkout ?
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.duration} onChange={(e) => setWorkoutDuration(e.target.value)}
+            value={workoutDuration} id="workoutDuration" />
+            <div className="input-group-append">
+              <i onClick={(e) => handleEditWorkout(e)}
+              className="bi bi-check-circle fs-2 ms-2"></i>
+              <i onClick={() => setEditWorkout(false)}
+              className="bi bi-x-circle fs-2 ms-2"></i>
+            </div>
+            </>
+            :
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.duration} onChange={(e) => setWorkoutDuration(e.target.value)}
+            value={workoutDuration} id="workoutDuration" disabled/>
+            <div className="input-group-append">
+              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
+            </div>
+            </>
+            }
+          </div>
+          {/* ------ edit workout description ------ */}
+          <div className="input-group">
+            { editWorkout ?
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)}
+            value={workoutDescription} id="workoutDescription" />
+            <div className="input-group-append">
+              <i onClick={(e) => handleEditWorkout(e)}
+              className="bi bi-check-circle fs-2 ms-2"></i>
+              <i onClick={() => setEditWorkout(false)}
+              className="bi bi-x-circle fs-2 ms-2"></i>
+            </div>
+            </>
+            :
+            <>
+            <input type="text" className="form-control bg-white"
+            placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)}
+            value={workoutDescription} id="workoutDescription" disabled/>
+            <div className="input-group-append">
+              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
+            </div>
+            </>
+            }
+          </div>
 
-              <BootstrapInput placeholder={workout.activity_name} editable={true}
-                id="workoutActivityName" value={workoutActivityName}
-                onChange={(e) => setWorkoutActivityName(e.target.value)} />
-
-              <BootstrapInput placeholder={workout.duration} editable={true}
-                id="workoutDuration" value={workoutDuration}
-                onChange={(e) => setWorkoutDuration(e.target.value)} />
-
-              <BootstrapInput placeholder={workout.description} editable={true}
-                id="workoutDescription" value={workoutDescription}
-                onChange={(e) => setWorkoutDescription(e.target.value)} />
-            </form>
-          {/* ------ END OF if edit workout is true ------ */}
-        </>
-      ) : (
-        <>
-          {/* ------ START OF if edit workout is false ------ */}
-            <form className="">
-              <BootstrapInput placeholder={workout.name} editable={false}/>
-              <BootstrapInput placeholder={workout.activity_name} editable={false} />
-              <BootstrapInput placeholder={workout.duration} editable={false} />
-              <BootstrapInput placeholder={workout.description} editable={false} />
-            </form>
-        </>
-      )}
-      {/* ------ END OF if edit workout is false ------ */}
+        </div>
+      </form>
     </>
   );
 }
