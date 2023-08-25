@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from "react";
 import useToken from "@galvanize-inc/jwtdown-for-react";
+import ViewExercise from "./ViewExcercise";
 
+
+// ------------- bootstrap input form -------------
+function BootstrapInput (props) {
+const { id, placeholder, labelText, value, onChange, type } = props;
+return (
+    <div className="mb-4">
+      <label htmlFor={id} className="form-label">{labelText}</label>
+      <input value={value} onChange={onChange} required type={type} className="form-control" id={id} placeholder={placeholder} />
+    </div>
+  );
+}
+// ---------------------------------------------
 
 // ------------- view workout function -------------
 function ViewWorkout() {
@@ -53,84 +66,71 @@ function ViewWorkout() {
     const response = await fetch(url, fetchOptions);
     if (response.ok) {
       console.log(response);
-      setEditWorkout(false);
     }
   };
   // ---------------------------------------------
 
   return (
     <>
-    {/* ------ if edit workout is true ------ */}
-    {/* onMouseEnter={() => setEditWorkout(true)} onMouseLeave={() => setEditWorkout(false)}  */}
-        <div className="mx-5 mb-4 mt-4">
-          {/* ------ edit workout name------ */}
-          <form className="border border-secondary rounded-5 w-50 pt-3 px-3">
-          <div className="input-group">
-            { editWorkout ?
-            <>
-            <input type="text" className="ms-5 form-control text-center text-dark fs-3 bg-secondary bg-opacity-25 rounded-5"
-            placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)}
-            value={workoutName} id="workoutName" />
-            <div className="input-group-append">
-              <span onClick={(e) => handleEditWorkout(e)}
-              className="bi bi-check-circle fs-2 ms-2 text-success"></span>
-              <i onClick={() => setEditWorkout(false)}
-              className="bi bi-x-circle fs-2 ms-2 text-danger"></i>
-            </div>
-            </>
-            :
-            <>
-            <input type="text" className="ms-5 form-control text-center bg-white rounded-5 fs-3"
-            placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)}
-            value={workoutName} id="workoutName" disabled/>
-            <div className="input-group-append">
-              <i onClick={() => setEditWorkout(true)} className="bi bi-pencil fs-2 ms-2"></i>
-              <i className="bi bi-pencil fs-2 ms-2 opacity-0"></i>
-            </div>
-            </>
-            }
-          </div>
-          {/* ------ edit workout activity name and duration ------ */}
-          <div className="input-group">
-            { editWorkout ?
-            <>
-            <input type="text" className="form-control text-center text-dark fs-4 bg-secondary bg-opacity-25 rounded-5 me-4"
-            placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
-            value={workoutActivityName} id="workoutActivityName" />
-            <input type="text" className="form-control text-center text-dark fs-4 bg-secondary bg-opacity-25 rounded-5"
-            placeholder={workout.duration} onChange={(e) => setWorkoutDuration(e.target.value)}
-            value={workoutDuration} id="workoutDuration" />
-            </>
-            :
-            <>
-            <input type="text" className="form-control text-center bg-white rounded-5 fs-4 me-4"
-            placeholder={workout.activity_name} onChange={(e) => setWorkoutActivityName(e.target.value)}
-            value={workoutActivityName} id="workoutActivityName" disabled/>
-            <input type="text" className="form-control text-center bg-white rounded-5 fs-4"
-            placeholder={workout.duration} onChange={(e) => setWorkoutDuration(e.target.value)}
-            value={workoutDuration} id="workoutDuration" disabled/>
-            </>
-            }
-          </div>
-          {/* ------ edit workout description ------ */}
-          <div className="input-group">
-            { editWorkout ?
-            <>
-            <textarea type="text" className="form-control text-center text-dark fs-5 bg-secondary bg-opacity-25 rounded-5 h-100"
-            placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)} rows="3"
-            value={workoutDescription} id="workoutDescription"></textarea>
-            </>
-            :
-            <>
-            <textarea type="text" className="form-control text-center bg-white rounded-5 fs-5 h-100"
-            placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)}
-            value={workoutDescription} id="workoutDescription" rows="3" disabled></textarea>
-            </>
-            }
-          </div>
-        </form>
-        </div>
+      {editWorkout ? (
+        <>
+          {/* ------ if edit workout is true ------ */}
+            <form>
+              <div className="mx-5">
+                <BootstrapInput
+                id="workoutName"
+                value={workoutName}
+                onChange={(e) => setWorkoutName(e.target.value)}
+                type="text" />
+              </div>
+              <div className="mx-5">
+                <BootstrapInput
+                id="workoutDuration"
+                value={workoutDuration}
+                onChange={(e) => setWorkoutDuration(e.target.value)}
+                type="text" />
+              </div>
+              <div className="mx-5">
+                <BootstrapInput
+                id="workoutActivityName"
+                value={workoutActivityName}
+                onChange={(e) => setWorkoutActivityName(e.target.value)}
+                type="text" />
+              </div>
+              <div className="mx-5">
+                <BootstrapInput
+                id="workoutDescription"
+                value={workoutDescription}
+                onChange={(e) => setWorkoutDescription(e.target.value)}
+                type="text" />
+              </div>
+            </form>
 
+            <i onClick={(e) => handleEditWorkout(e)} className="bi bi-check-circle fs-2 ms-5"></i>
+            <i onClick={() => setEditWorkout(false)} className="bi bi-x-circle fs-2 ms-2"></i>
+        </>
+      ) : (
+        <>
+          {/* ------ if edit workout is false ------ */}
+          <h1 className="m-5">
+            Name: {workout.name}
+            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
+          </h1>
+          <h2 className="m-5">
+            Activity: {workout.activity_name}
+            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
+          </h2>
+          <h2 className="m-5">
+            Duration: {workout.duration}
+            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
+          </h2>
+          <p className="m-5">
+            description: {workout.description}
+            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
+          </p>
+        </>
+      )}
+      <ViewExercise />
     </>
   );
 }
