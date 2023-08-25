@@ -3,18 +3,6 @@ import useToken from "@galvanize-inc/jwtdown-for-react";
 import ViewExercise from "./ViewExcercise";
 
 
-// ------------- bootstrap input form -------------
-function BootstrapInput (props) {
-const { id, placeholder, labelText, value, onChange, type } = props;
-return (
-    <div className="mb-4">
-      <label htmlFor={id} className="form-label">{labelText}</label>
-      <input value={value} onChange={onChange} required type={type} className="form-control" id={id} placeholder={placeholder} />
-    </div>
-  );
-}
-// ---------------------------------------------
-
 // ------------- view workout function -------------
 function ViewWorkout() {
   const [workout, setWorkout] = useState("");
@@ -71,64 +59,38 @@ function ViewWorkout() {
 
   return (
     <>
-      {editWorkout ? (
-        <>
-          {/* ------ if edit workout is true ------ */}
-            <form>
-              <div className="mx-5">
-                <BootstrapInput
-                id="workoutName"
-                value={workoutName}
-                onChange={(e) => setWorkoutName(e.target.value)}
-                type="text" />
-              </div>
-              <div className="mx-5">
-                <BootstrapInput
-                id="workoutDuration"
-                value={workoutDuration}
-                onChange={(e) => setWorkoutDuration(e.target.value)}
-                type="text" />
-              </div>
-              <div className="mx-5">
-                <BootstrapInput
-                id="workoutActivityName"
-                value={workoutActivityName}
-                onChange={(e) => setWorkoutActivityName(e.target.value)}
-                type="text" />
-              </div>
-              <div className="mx-5">
-                <BootstrapInput
-                id="workoutDescription"
-                value={workoutDescription}
-                onChange={(e) => setWorkoutDescription(e.target.value)}
-                type="text" />
-              </div>
-            </form>
+    {/* ------ if edit workout is true ------ */}
+      <div className="container">
+        <div className="row">
+          <div className="col"></div>
 
-            <i onClick={(e) => handleEditWorkout(e)} className="bi bi-check-circle fs-2 ms-5"></i>
-            <i onClick={() => setEditWorkout(false)} className="bi bi-x-circle fs-2 ms-2"></i>
-        </>
-      ) : (
-        <>
-          {/* ------ if edit workout is false ------ */}
-          <h1 className="m-5">
-            Name: {workout.name}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </h1>
-          <h2 className="m-5">
-            Activity: {workout.activity_name}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </h2>
-          <h2 className="m-5">
-            Duration: {workout.duration}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </h2>
-          <p className="m-5">
-            description: {workout.description}
-            <i onClick={() => setEditWorkout(true)} className="bi bi-pencil"></i>
-          </p>
-        </>
-      )}
+          <div className="col-10 border border-dark rounded-5 p-4 my-5">
+            <div className="input-group input-group-lg mb-3">
+              <i className="bi bi-check-circle  d-flex align-self-center fs-1 me-2"></i>
+              <i className="bi bi-x-circle  d-flex align-self-center fs-1 me-3"></i>
+              <input type="text" className="form-control text-center fs-1 rounded-5 bg-secondary bg-opacity-25" placeholder="Workout"/>
+              <i onClick={(e) => handleEditWorkout(e)} className="bi bi-check-circle text-success d-flex align-self-center fs-1 ms-3"></i>
+              <i onClick={() => setEditWorkout(false)} className="bi bi-x-circle text-danger d-flex align-self-center fs-1 ms-2"></i>
+            </div>
+
+            <div className="input-group input-group-md mb-3">
+              <input type="text" className="form-control text-center fs-2 rounded-5 bg-secondary bg-opacity-25" placeholder="Activity"/>
+            </div>
+
+            <div className="input-group input-group-md mb-3">
+              <input type="text" className="form-control text-center fs-2 rounded-5 bg-secondary bg-opacity-25" placeholder="Duration"/>
+            </div>
+
+            <div className="input-group input-group-sm">
+              <textarea className="form-control text-center fs-4 rounded-5 bg-secondary bg-opacity-25" placeholder="Description"></textarea>
+            </div>
+          </div>
+
+          <div className="col"></div>
+        </div>
+      </div>
+
+      {/*  END OF edit workout */}
       <ViewExercise />
     </>
   );

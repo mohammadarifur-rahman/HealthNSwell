@@ -100,7 +100,7 @@ function ViewExercise() {
                       </>
                       :
                       <>
-                      <button type="button" className="btn btn-danger me-2" onClick={() => handleEditExercise(
+                      <button type="button" className="btn btn-success me-2" onClick={() => handleEditExercise(
                         exercise.id,
                         exercise.name,
                         exercise.sets,
