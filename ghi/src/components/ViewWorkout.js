@@ -54,7 +54,6 @@ function ViewWorkout() {
     data.account = workout.account;
 
     const url = `${process.env.REACT_APP_API_HOST}/api/workouts/${workout.id}/`;
-    console.log(data);
     const fetchOptions = {
       method: "put",
       body: JSON.stringify(data),
