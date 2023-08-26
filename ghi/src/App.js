@@ -6,6 +6,7 @@ import EditAccount from "./components/EditAccount";
 import WorkoutList from "./components/WorkoutList";
 import CreateWorkout from "./components/CreateWorkout";
 import ViewWorkout from "./components/ViewWorkout";
+import Chat from './Chat';
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <AuthProvider baseUrl={baseUrl}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/chat" element={<Chat />} />
 
           <Route path="accounts">
             <Route index element={<LoginForm />} />
