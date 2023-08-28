@@ -6,12 +6,15 @@ import EditAccount from "./components/EditAccount";
 import WorkoutList from "./components/WorkoutList";
 import CreateWorkout from "./components/CreateWorkout";
 import ViewWorkout from "./components/ViewWorkout";
+import { useState } from "react";
 import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 
 function App() {
   const domain = /https:\/\/[^/]+/;
   const basename = process.env.PUBLIC_URL.replace(domain, "");
   const baseUrl = process.env.REACT_APP_API_HOST;
+
+  const [currentWorkout, setCurrentWorkout] = useState("");
 
   return (
     <BrowserRouter basename={basename}>
@@ -26,9 +29,9 @@ function App() {
           </Route>
 
           <Route path="workouts">
-            <Route index element={<WorkoutList />} />
+            <Route index element={<WorkoutList setCurrentWorkout={setCurrentWorkout}/>} />
             <Route path="create" element={<CreateWorkout />} />
-            <Route path="view" element={<ViewWorkout />} />
+            <Route path="view" element={<ViewWorkout currentWorkout={currentWorkout}/>} />
           </Route>
         </Routes>
       </AuthProvider>

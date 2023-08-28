@@ -1,15 +1,15 @@
 import React, {useEffect, useState } from 'react';
 import useToken from "@galvanize-inc/jwtdown-for-react";
 
-function ViewExercise() {
-
+function ViewExercise({currentWorkout}) {
+  console.log(currentWorkout);
   const [exercises, setExercises] = useState([]);
   const [selected, setSelected] = useState("");
   const { token } = useToken();
 
   async function loadExercises() {
     // do not hardcode workout id
-    const url = `${process.env.REACT_APP_API_HOST}/api/exercises/1/`;
+    const url = `${process.env.REACT_APP_API_HOST}/api/exercises/${currentWorkout.id}/`;
     const response = await fetch(url, { credentials: "include" });
     if (response.ok) {
       const data = await response.json();

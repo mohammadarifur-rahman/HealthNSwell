@@ -3,7 +3,8 @@ import useToken from "@galvanize-inc/jwtdown-for-react";
 import ViewExercise from "./ViewExcercise";
 
 
-function ViewWorkout() {
+function ViewWorkout({currentWorkout}) {
+  console.log(currentWorkout);
   const [workout, setWorkout] = useState("");
   const [editWorkout, setEditWorkout] = useState(false);
   const [workoutName, setWorkoutName] = useState("");
@@ -13,19 +14,12 @@ function ViewWorkout() {
   const { token } = useToken();
 
   // ------------- START OF GET workout function -------------
-  const getWorkout = async (e) => {
-      // do not hardcode id -- add error catching if workout doesn't exist
-    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/1/`;
-    const response = await fetch(workoutUrl, { credentials: "include" });
-    const workout = await response.json();
-    setWorkout(workout);
-    setWorkoutName(workout.name);
-    setWorkoutDuration(workout.duration);
-    setWorkoutDescription(workout.description);
-    setWorkoutActivityName(workout.activity_name);
-  };
   useEffect(() => {
-    getWorkout();
+    setWorkout(currentWorkout);
+    setWorkoutName(currentWorkout.name);
+    setWorkoutDuration(currentWorkout.duration);
+    setWorkoutDescription(currentWorkout.description);
+    setWorkoutActivityName(currentWorkout.activity_name);
   }, []);
   // ------------- END OF GET workout function -------------
 
@@ -69,7 +63,7 @@ function ViewWorkout() {
 
   return (
     <>
-      <div className="container"s>
+      <div className="container">
         <div className="row">
           <div className="col"></div>
           {/* ------------- START OF edit workout name ------------- */}
@@ -122,7 +116,7 @@ function ViewWorkout() {
           <div className="col"></div>
         </div>
       </div>
-      <ViewExercise />
+      <ViewExercise currentWorkout={currentWorkout}/>
     </>
   );
 }
