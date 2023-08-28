@@ -1,127 +1,232 @@
-import { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import useToken from "@galvanize-inc/jwtdown-for-react";
 
-
 function ViewExercise() {
+
   const [exercises, setExercises] = useState([]);
-  const [currentExerciseEdit, setCurrentExerciseEdit] = useState(false);
+  const [selected, setSelected] = useState("");
   const { token } = useToken();
 
-  // ----------- START OF GET request to exercises --------------
-    // y u do dis send only one request
-  const getExercises = async () => {
-      // do not hardcode id
-    const exercisesUrl = `${process.env.REACT_APP_API_HOST}/api/exercises/1/`;
-    const response = await fetch(exercisesUrl, { credentials: "include" });
-    const exercises = await response.json();
-    setExercises(exercises);
-  };
+  async function loadExercises() {
+    // do not hardcode workout id
+    const url = `${process.env.REACT_APP_API_HOST}/api/exercises/1/`;
+    const response = await fetch(url, { credentials: "include" });
+    if (response.ok) {
+      const data = await response.json();
+      setExercises(data);
+    }
+  }
+
   useEffect(() => {
-    getExercises();
+    loadExercises();
   }, []);
-  // ----------- END OF GET request to exercises --------------
 
-
-  // ----------- START OF DELETE request to exercises --------------
-  async function handleDeleteExercise(exercise_id) {
-    const exerciseUrl = `${process.env.REACT_APP_API_HOST}/api/exercises/${exercise_id}/`;
-    const exerciseFetchOptions = {
-      method: "delete",
+  async function handleDeleteExercise(id) {
+    setBadReq(false);
+    const exerciseUrl = `${process.env.REACT_APP_API_HOST}/api/exercises/${id}/`;
+    const fetchOptions = {
+      method: 'delete',
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-    };
-    const exerciseResponse = await fetch(exerciseUrl, exerciseFetchOptions);
-    if (exerciseResponse.ok) {
-      console.log("delete successful");
     }
+    const exerciseResponse = await fetch(exerciseUrl, fetchOptions);
+    if (exerciseResponse.ok) {
+      setExercises(exercises.filter((exercise) => exercise.id !== id))
+    }
+  };
+
+  const [exerciseName, setExerciseName] = useState('');
+  const [exerciseSets, setExerciseSets] = useState('');
+  const [exerciseReps, setExerciseReps] = useState('');
+  const [exerciseWeight, setExerciseWeight] = useState('');
+  const [exerciseRestBetweenSets, setExerciseRestBetweenSets] = useState('');
+  const [exerciseRestBetweenExercises, setExerciseRestBetweenExercises] = useState('');
+  const [badReq, setBadReq] = useState(false);
+  const [message, setMessage] = useState("");
+
+  let badReqClasses = "alert alert-danger d-none";
+  if (badReq) {
+    badReqClasses = "alert alert-danger";
   }
-  // ----------- END OF DELETE request to exercises --------------
 
-  // ----------- START OF PUT request to exercises --------------
-  // got rid of e -- error on frontend
-  const handleEditExercise = async (id, name, sets, reps, weight, restBetweenSets, restBetweenExercises, workout) => {
+  async function handleUpdateExercise(id) {
+    setBadReq(false);
+    id === selected ? setSelected(""): setSelected(id)
+  };
+
+  async function handleSendRequest(id, workoutId) {
+    setBadReq(false);
     const data = {};
-    data.name = name;
-    data.sets = sets;
-    data.reps = reps;
-    data.weight = weight;
-    data.rest_between_sets = restBetweenSets;
-    data.rest_between_exercises = restBetweenExercises;
-    data.workout = workout;
+    data.name = exerciseName;
+    data.sets = exerciseSets;
+    data.reps = exerciseReps;
+    data.weight = exerciseWeight;
+    data.rest_between_sets = exerciseRestBetweenSets;
+    data.rest_between_exercises = exerciseRestBetweenExercises;
+    data.workout = workoutId;
 
-    const url = `${process.env.REACT_APP_API_HOST}/api/exercises/${id}/`;
+    const exerciseUrl = `${process.env.REACT_APP_API_HOST}/api/exercises/${id}/`;
     const fetchOptions = {
-      method: "put",
+      method: 'put',
       body: JSON.stringify(data),
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     };
-    const response = await fetch(url, fetchOptions);
-    if (response.ok) {
-      console.log(response);
+    const exerciseResponse = await fetch(exerciseUrl, fetchOptions);
+    if (exerciseResponse.ok) {
+      setSelected("");
+      loadExercises();
+    }  else {
+      const json = await exerciseResponse.json();
+      setMessage(json.message);
+      setBadReq(true);
     }
   };
-  // ----------- END OF PUT request to exercises --------------
 
-  return (
-    <>
-    <table className="table table-striped">
-        <thead>
-            <tr>
-            <th scope="col">Exercise Name</th>
-            <th scope="col">Sets</th>
-            <th scope="col">Reps</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Rest Between Sets</th>
-            <th scope="col">Rest Between Exercises</th>
-            <th scope="col"></th>
+  const handleChangeExerciseName = (event) => {
+    const value = event.target.value;
+    setExerciseName(value);
+  }
+
+  const handleChangeExerciseSets = (event) => {
+    const value = event.target.value;
+    setExerciseSets(value);
+  }
+
+  const handleChangeExerciseReps = (event) => {
+    const value = event.target.value;
+    setExerciseReps(value);
+  }
+
+  const handleChangeExerciseWeight = (event) => {
+    const value = event.target.value;
+    setExerciseWeight(value);
+  }
+
+  const handleChangeExerciseRestBetweenSets = (event) => {
+    const value = event.target.value;
+    setExerciseRestBetweenSets(value);
+  }
+
+  const handleChangeExerciseRestBetweenExercises = (event) => {
+    const value = event.target.value;
+    setExerciseRestBetweenExercises(value);
+  }
+
+    return (
+      <div className="container my-4">
+        <h1 className="display-5 fw-bold">Exercises</h1>
+        <div className={badReqClasses} id="fail-message">{message}</div>
+        <table className="table table-striped">
+          <thead>
+            <tr className="bg-success">
+              <th className="text-dark text-center">Name</th>
+              <th className="text-dark text-center">Sets</th>
+              <th className="text-dark text-center">Reps</th>
+              <th className="text-dark text-center">Weight</th>
+              <th className="text-dark text-center">Rest Between Sets</th>
+              <th className="text-dark text-center">Rest Between Reps</th>
             </tr>
-        </thead>
-        <tbody>
-          {exercises && exercises.map(exercise => {
-                return (
-                  <tr key={exercise.id} value={exercise.id}>
-                    <td className=''>{exercise.name}</td>
-                    <td className=''>{exercise.sets}</td>
-                    <td className=''>{exercise.reps}</td>
-                    <td className=''>{exercise.weight}</td>
-                    <td className=''>{exercise.rest_between_sets}</td>
-                    <td className=''>{exercise.rest_between_exercises}</td>
-                    <td>
-                    <div>
-                      { !currentExerciseEdit ?
-                      <>
-                      <button type="button" className="btn btn-warning me-2" onClick={() => setCurrentExerciseEdit(true)}>Edit</button>
-                      <button type="button" className="btn btn-danger ms-2" onClick={() => handleDeleteExercise(exercise.id)}>Remove</button>
-                      </>
-                      :
-                      <>
-                      <button type="button" className="btn btn-success me-2" onClick={() => handleEditExercise(
-                        exercise.id,
-                        exercise.name,
-                        exercise.sets,
-                        exercise.reps,
-                        exercise.weight,
-                        exercise.rest_between_sets,
-                        exercise.rest_between_exercises,
-                        exercise.workout
-                        )}>Submit</button>
-                      <button type="button" className="btn btn-warning ms-2" onClick={() => setCurrentExerciseEdit(false)}>Cancel</button>
-                      </>
-                      }
+          </thead>
+          <tbody>
+            {exercises && exercises.map(exercise => {
+              return (
+                <tr key={exercise.id} value={exercise.id}>
+                  <td>
+                    { selected === exercise.id ?
+                    <div className="form-group">
+                      <input onChange={handleChangeExerciseName} type="text" id="name" name="name" className="form-control border-success text-center" placeholder={ exercise.name }/>
                     </div>
-                    </td>
-                  </tr>
-                );
-            })}
-        </tbody>
-    </table>
-    </>
-  );
-}
+                    :
+                    <div>
+                      { exercise.name }
+                    </div>
+                    }
+                  </td>
 
-export default ViewExercise;
+                  <td>
+                  { selected === exercise.id ?
+                    <div className="form-group">
+                      <input onChange={handleChangeExerciseSets} type="number" id="sets" name="sets" className="form-control border-success text-center" placeholder={ exercise.sets }/>
+                    </div>
+                    :
+                    <div>
+                      { exercise.sets }
+                    </div>
+                    }
+                  </td>
+
+                  <td>
+                  { selected === exercise.id ?
+                    <div className="form-group">
+                      <input onChange={handleChangeExerciseReps} type="number" id="reps" name="reps" className="form-control border-success text-center" placeholder={ exercise.reps } />
+                    </div>
+                    :
+                    <div>
+                      { exercise.reps }
+                    </div>
+                    }
+                  </td>
+
+                  <td>
+                  { selected === exercise.id ?
+                    <div className="form-group">
+                      <input onChange={handleChangeExerciseWeight} type="number" id="weight" name="weight" className="form-control border-success text-center" placeholder={ exercise.weight } />
+                    </div>
+                    :
+                    <div>
+                      { exercise.weight }
+                    </div>
+                    }
+                  </td>
+
+                  <td>
+                  { selected === exercise.id ?
+                    <div className="form-group">
+                      <input onChange={handleChangeExerciseRestBetweenSets} type="number" id="rest_between_sets" name="rest_between_sets" className="form-control border-success text-center" placeholder={ exercise.rest_between_sets } />
+                    </div>
+                    :
+                    <div>
+                      { exercise.reps }
+                    </div>
+                    }
+                  </td>
+
+                  <td>
+                  { selected === exercise.id ?
+                    <div className="form-group">
+                      <input onChange={handleChangeExerciseRestBetweenExercises} type="number" id="rest_between_exercises" name="rest_between_exercises" className="form-control border-success text-center" placeholder={ exercise.rest_between_exercises } />
+                    </div>
+                    :
+                    <div>
+                      { exercise.rest_between_exercises }
+                    </div>
+                    }
+                  </td>
+
+                  <td>
+                  <div className="d-grid gap-4 d-flex mx-4 justify-content-md-center">
+                    <button className="btn w-50 btn-warning fw-bold btn-sm d-md-block text-light shadow-sm" onClick={() => handleUpdateExercise(exercise.id)} variant="outline-dark">{exercise.id === selected ? "Cancel" : "Update"}</button>
+
+                    {exercise.id === selected ?
+                    <button className="btn w-50 btn-success fw-bold btn-sm d-md-block text-light shadow-sm" onClick={() => handleSendRequest(exercise.id, exercise.workout)} variant="outline-dark">Submit</button>
+                    :
+                    <button className="btn w-50 btn-danger fw-bold btn-sm d-md-block text-light shadow-sm" onClick={() => handleDeleteExercise(exercise.id)} variant="outline-dark">Delete</button>
+                    }
+                  </div>
+                  </td>
+
+                </tr>
+              );
+            })}
+          </tbody>
+      </table>
+      </div>
+    );
+  }
+
+  export default ViewExercise;

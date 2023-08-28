@@ -14,8 +14,8 @@ function ViewWorkout() {
 
   // ------------- START OF GET workout function -------------
   const getWorkout = async (e) => {
-      // do not hardcode id
-    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/3/`;
+      // do not hardcode id -- add error catching if workout doesn't exist
+    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/1/`;
     const response = await fetch(workoutUrl, { credentials: "include" });
     const workout = await response.json();
     setWorkout(workout);
@@ -69,15 +69,14 @@ function ViewWorkout() {
 
   return (
     <>
-
-      <div className="container">
+      <div className="container"s>
         <div className="row">
           <div className="col"></div>
           {/* ------------- START OF edit workout name ------------- */}
           <div className="col-10 border border-dark rounded-5 p-4 my-5">
             <div className="input-group input-group-lg mb-3">
-              <i className="bi bi-check-circle opacity-0 d-flex align-self-center fs-1 me-2"></i>
-              <i className="bi bi-x-circle opacity-0 d-flex align-self-center fs-1 me-3"></i>
+              <i className="bi bi-check-circle invisible d-flex align-self-center fs-1 me-2"></i>
+              <i className="bi bi-x-circle invisible d-flex align-self-center fs-1 me-3"></i>
               { editWorkout ?
               <input type="text" className="form-control text-center fs-1 rounded-5 bg-secondary bg-opacity-25" placeholder={workout.name} onChange={(e) => setWorkoutName(e.target.value)} value={workoutName} id="workoutName"/>
               :
@@ -90,7 +89,7 @@ function ViewWorkout() {
               </>
               :
               <>
-              <i className="bi bi-check-circle opacity-0 d-flex align-self-center fs-1 ms-3"></i>
+              <i className="bi bi-check-circle invisible d-flex align-self-center fs-1 ms-3"></i>
               <i onClick={() => setEditWorkout(true)} className="bi bi-pencil text-dark d-flex align-self-center fs-1 ms-2"></i>
               </>
               }
