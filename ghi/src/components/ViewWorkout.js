@@ -18,7 +18,7 @@ function ViewWorkout({currentWorkout}) {
     setWorkoutDuration(currentWorkout.duration);
     setWorkoutDescription(currentWorkout.description);
     setWorkoutActivityName(currentWorkout.activity_name);
-  }, []);
+  }, [currentWorkout]);
   // ------------- END OF GET workout function -------------
 
   // ------------- START OF PUT workout function -------------
