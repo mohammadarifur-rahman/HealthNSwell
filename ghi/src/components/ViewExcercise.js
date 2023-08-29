@@ -4,10 +4,10 @@ import useToken from "@galvanize-inc/jwtdown-for-react";
 function ViewExercise({currentWorkout}) {
   const [exercises, setExercises] = useState([]);
   const [selected, setSelected] = useState("");
+  const [addExercise, setAddExercise] = useState(false);
   const { token } = useToken();
 
   async function loadExercises() {
-    // do not hardcode workout id
     const url = `${process.env.REACT_APP_API_HOST}/api/exercises/${currentWorkout.id}/`;
     const response = await fetch(url, { credentials: "include" });
     if (response.ok) {
@@ -222,6 +222,37 @@ function ViewExercise({currentWorkout}) {
                 </tr>
               );
             })}
+          </tbody>
+          <tbody>
+            { !addExercise ?
+            <tr className='text-right'>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <div>
+                  <button className="btn btn-success fw-bold" onClick={() => setAddExercise(true)} type="button">Add An Exercise</button>
+                </div>
+              </td>
+            </tr>
+            :
+            <tr className='text-right border'>
+              <td><input onChange={handleChangeExerciseRestBetweenExercises} type="text" id="rest_between_exercises" name="rest_between_exercises" className="form-control border-success text-center" placeholder="name" /></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <div>
+                  <button className="btn w-50 btn-danger fw-bold" onClick={() => setAddExercise(false)} type="button">Cancel</button>
+                </div>
+              </td>
+            </tr>
+            }
           </tbody>
       </table>
       </div>
