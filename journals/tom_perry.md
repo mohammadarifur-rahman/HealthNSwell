@@ -1,3 +1,20 @@
+## 25-29 Aug 2023
+
+List of feature
+
+- Added ViewWorkout page
+- Added ViewExersice
+- Added WorkoutCard
+- Added WorkoutList
+- Added useLocalStorage
+- Refactored App.js to use Local Storage
+- Fixed Navigation of Login and Account form
+
+Ah-ha
+You can make custom REACT hooks.
+You can pass state from parent to child.
+Don't use class based REACT componets it is better to use function based.
+
 ## 24 Aug 2023
 
 List of features
