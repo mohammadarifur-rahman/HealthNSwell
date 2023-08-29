@@ -1,7 +1,21 @@
+## 24 Aug 2023
+
+List of features
+
+- Added log in form
+- Added nav bar for logged in functionality
+
+Ah-ha
+We may need to use useEffect when fetch data!
+
 ## 22-23 Aug 2023
 
 List of features
 
+- Added create workout form
+- Added css for create workout form
+- Updated workouts model
+- Updated migrations
 - Created Edit and delete Account functionality.
 - Added css for the Edit Account form.
 
@@ -29,6 +43,7 @@ List of features
 - Configured App.js routes and paths.
 - Refactor backend to use frontend authentication
 - Create login form functionality
+- Added final API design wireframe
 
 Ah-ha
 We can download bootstrap icons!
