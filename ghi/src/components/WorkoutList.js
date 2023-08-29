@@ -19,7 +19,6 @@ function WorkoutList({setCurrentWorkout}) {
     const response = await fetch(url, { credentials: "include" });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       setWorkoutList(data);
     }
   }

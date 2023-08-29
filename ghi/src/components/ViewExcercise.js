@@ -2,7 +2,6 @@ import React, {useEffect, useState } from 'react';
 import useToken from "@galvanize-inc/jwtdown-for-react";
 
 function ViewExercise({currentWorkout}) {
-  console.log(currentWorkout);
   const [exercises, setExercises] = useState([]);
   const [selected, setSelected] = useState("");
   const { token } = useToken();

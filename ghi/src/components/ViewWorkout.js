@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import ViewExercise from "./ViewExcercise";
 
-
 function ViewWorkout({currentWorkout}) {
-  console.log(currentWorkout);
   const [workout, setWorkout] = useState("");
   const [editWorkout, setEditWorkout] = useState(false);
   const [workoutName, setWorkoutName] = useState("");
@@ -44,8 +42,8 @@ function ViewWorkout({currentWorkout}) {
     };
     const response = await fetch(url, fetchOptions);
     if (response.ok) {
-      console.log(response);
       setEditWorkout(false);
+      console.log(response);
     }
   };
   // ------------- END OF PUT workout function -------------
