@@ -1,11 +1,21 @@
 import React, {useEffect, useState } from 'react';
 import useToken from "@galvanize-inc/jwtdown-for-react";
+import { useNavigate } from "react-router-dom";
 
 function ViewExercise({currentWorkout}) {
   const [exercises, setExercises] = useState([]);
   const [selected, setSelected] = useState("");
   const [addExercise, setAddExercise] = useState(false);
   const { token } = useToken();
+  const navigate = useNavigate();
+
+  const [exerciseName, setExerciseName] = useState('');
+  const [exerciseSets, setExerciseSets] = useState('');
+  const [exerciseReps, setExerciseReps] = useState('');
+  const [exerciseWeight, setExerciseWeight] = useState('');
+  const [exerciseRestBetweenSets, setExerciseRestBetweenSets] = useState('');
+  const [exerciseRestBetweenExercises, setExerciseRestBetweenExercises] = useState('');
+  const [badReq, setBadReq] = useState(false);
 
   async function loadExercises() {
     const url = `${process.env.REACT_APP_API_HOST}/api/exercises/${currentWorkout.id}/`;
@@ -35,20 +45,6 @@ function ViewExercise({currentWorkout}) {
       setExercises(exercises.filter((exercise) => exercise.id !== id))
     }
   };
-
-  const [exerciseName, setExerciseName] = useState('');
-  const [exerciseSets, setExerciseSets] = useState('');
-  const [exerciseReps, setExerciseReps] = useState('');
-  const [exerciseWeight, setExerciseWeight] = useState('');
-  const [exerciseRestBetweenSets, setExerciseRestBetweenSets] = useState('');
-  const [exerciseRestBetweenExercises, setExerciseRestBetweenExercises] = useState('');
-  const [badReq, setBadReq] = useState(false);
-  const [message, setMessage] = useState("");
-
-  let badReqClasses = "alert alert-danger d-none";
-  if (badReq) {
-    badReqClasses = "alert alert-danger";
-  }
 
   async function handleUpdateExercise(id) {
     setBadReq(false);
@@ -81,7 +77,6 @@ function ViewExercise({currentWorkout}) {
       loadExercises();
     }  else {
       const json = await exerciseResponse.json();
-      setMessage(json.message);
       setBadReq(true);
     }
   };
@@ -116,10 +111,47 @@ function ViewExercise({currentWorkout}) {
     setExerciseRestBetweenExercises(value);
   }
 
+  // create NewExercise ----------------------
+
+  async function handleCreateExercise() {
+    const data = {};
+
+    data.name = exerciseName;
+    data.sets = exerciseSets;
+    data.reps = exerciseReps;
+    data.weight = exerciseWeight;
+    data.rest_between_sets = exerciseRestBetweenSets;
+    data.rest_between_exercises = exerciseRestBetweenExercises;
+    data.workout = currentWorkout.id;
+
+    const exerciseUrl = `${process.env.REACT_APP_API_HOST}/api/exercises/`;
+    const fetchOptions = {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const exerciseResponse = await fetch(exerciseUrl, fetchOptions);
+    if (exerciseResponse.ok) {
+      loadExercises();
+      setBadReq(false);
+
+      setExerciseName('');
+      setExerciseSets('');
+      setExerciseReps('');
+      setExerciseWeight('');
+      setExerciseRestBetweenSets('');
+      setExerciseRestBetweenExercises('');
+    } else {
+      setBadReq(true);
+    }
+  };
+
     return (
       <div className="container my-4">
         <h1 className="display-5 fw-bold">Exercises</h1>
-        <div className={badReqClasses} id="fail-message">{message}</div>
         <table className="table table-striped">
           <thead>
             <tr className="bg-success">
@@ -223,6 +255,7 @@ function ViewExercise({currentWorkout}) {
               );
             })}
           </tbody>
+
           <tbody>
             { !addExercise ?
             <tr className='text-right'>
@@ -240,21 +273,34 @@ function ViewExercise({currentWorkout}) {
             </tr>
             :
             <tr className='text-right border'>
-              <td><input onChange={handleChangeExerciseRestBetweenExercises} type="text" id="rest_between_exercises" name="rest_between_exercises" className="form-control border-success text-center" placeholder="name" /></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><input type="text" className="form-control text-center" placeholder="Exercise Name" onChange={(e) => setExerciseName(e.target.value)} value={exerciseName} id="exerciseName" /></td>
+
+              <td><input type="number" className="form-control text-center" placeholder="Sets" onChange={(e) => setExerciseSets(e.target.value)} value={exerciseSets} id="exerciseSets" /></td>
+
+              <td><input type="number" className="form-control text-center" placeholder="Reps" onChange={(e) => setExerciseReps(e.target.value)} value={exerciseReps} id="exerciseReps" /></td>
+
+              <td><input type="number" className="form-control text-center" placeholder="Weight" onChange={(e) => setExerciseWeight(e.target.value)} value={exerciseWeight} id="exerciseWeight" /></td>
+
+              <td><input type="number" className="form-control text-center" placeholder="Rest Between Sets" onChange={(e) => setExerciseRestBetweenSets(e.target.value)} value={exerciseRestBetweenSets} id="exerciseRestBetweenSets" /></td>
+
+              <td><input type="number" className="form-control text-center" placeholder="Rest Between Exercises" onChange={(e) => setExerciseRestBetweenExercises(e.target.value)} value={exerciseRestBetweenExercises} id="exerciseRestBetweenExercises" /></td>
+
               <td>
                 <div>
                   <button className="btn w-50 btn-danger fw-bold" onClick={() => setAddExercise(false)} type="button">Cancel</button>
+                  <button className="btn w-50 btn-success fw-bold" onClick={() => handleCreateExercise()} variant="outline-dark">Submit</button>
                 </div>
               </td>
             </tr>
             }
           </tbody>
       </table>
+            { badReq ? <div className="alert alert-danger border" role="alert">Please fill out all fields to create an exercise.</div> : null}
+
+      <div className='m-5'>
+        <button className="btn btn-outline-primary fw-bold" onClick={() => navigate("/workouts")} type="button">Return to Workouts</button>
+      </div>
+
       </div>
     );
   }

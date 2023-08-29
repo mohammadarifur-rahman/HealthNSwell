@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import ViewExercise from "./ViewExcercise";
+import { useNavigate } from "react-router-dom";
+import NavLogIn from "./NavLogIn";
 
 function ViewWorkout({currentWorkout}) {
   const [workout, setWorkout] = useState("");
@@ -9,6 +11,7 @@ function ViewWorkout({currentWorkout}) {
   const [workoutDuration, setWorkoutDuration] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [workoutActivityName, setWorkoutActivityName] = useState("");
+  const navigate = useNavigate();
   const { token } = useToken();
 
   // ------------- START OF GET workout function -------------
@@ -43,7 +46,6 @@ function ViewWorkout({currentWorkout}) {
     const response = await fetch(url, fetchOptions);
     if (response.ok) {
       setEditWorkout(false);
-      console.log(response);
     }
   };
   // ------------- END OF PUT workout function -------------
@@ -59,8 +61,24 @@ function ViewWorkout({currentWorkout}) {
   }
   // ------------- END OF setEditWorkoutFalse function -------------
 
+  async function handleDeleteWorkout() {
+    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/${currentWorkout.id}/`;
+    const fetchOptions = {
+      method: 'delete',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+    const workoutResponse = await fetch(workoutUrl, fetchOptions);
+    if (workoutResponse.ok) {
+      navigate("/workouts");
+    }
+  };
+
   return (
     <>
+      <NavLogIn />
       <div className="container">
         <div className="row">
           <div className="col"></div>
@@ -105,10 +123,14 @@ function ViewWorkout({currentWorkout}) {
             {/* ------------- START OF edit workout description ------------- */}
             <div className="input-group input-group-sm">
               { editWorkout ?
-              <textarea type="text" className="form-control text-center fs-4 rounded-5 bg-secondary bg-opacity-25" placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)} rows="3" value={workoutDescription} id="workoutDescription" />
+              <textarea type="text" className="form-control text-center fs-4 rounded-5 bg-secondary bg-opacity-25" placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)} rows="1" value={workoutDescription} id="workoutDescription" />
               :
-              <textarea type="text" className="form-control text-center fs-4 rounded-5 bg-white border-0" placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)} value={workoutDescription} id="workoutDescription" rows="3" disabled />
+              <textarea type="text" className="form-control text-center fs-4 rounded-5 bg-white border-0" placeholder={workout.description} onChange={(e) => setWorkoutDescription(e.target.value)} value={workoutDescription} id="workoutDescription" rows="1" disabled />
               }
+            </div>
+            {/* ------------- START OF edit workout description ------------- */}
+            <div className="">
+              <button className="btn btn-outline-danger fw-bold" onClick={() => handleDeleteWorkout()} type="button">Delete Workout</button>
             </div>
           </div>
           <div className="col"></div>

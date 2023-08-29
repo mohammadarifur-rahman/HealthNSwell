@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WorkoutCard from "./WorkoutCard";
+import NavLogIn from "./NavLogIn";
 import "./Home.css";
 
 function WorkoutList({setCurrentWorkout}) {
@@ -20,6 +21,7 @@ function WorkoutList({setCurrentWorkout}) {
 
   return (
     <>
+      <NavLogIn />
       <div className="container">
         <h1>WorkOut List</h1>
         <div className="row">
