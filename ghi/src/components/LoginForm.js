@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/workouts");
     }
     if (!token && click) {
       setError(true);

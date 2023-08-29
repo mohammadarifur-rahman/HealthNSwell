@@ -42,7 +42,7 @@ function AccountForm() {
     if (accountResponse.ok) {
       e.target.reset();
       login(email, password);
-      navigate("/");
+      navigate("/workouts");
     }
   };
 
