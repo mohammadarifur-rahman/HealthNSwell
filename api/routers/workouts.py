@@ -16,13 +16,14 @@ async def create_workouts(
         return repo.create(workout)
 
 
-@router.get("/", response_model=Union[List[WorkoutOut], Error])
+@router.get("/{account_id}/", response_model=Union[List[WorkoutOut], Error])
 async def get_all(
+    account_id: int,
     repo: WorkoutRepository = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     if account_data:
-        return repo.get_all()
+        return repo.get_all(account_id)
 
 
 @router.put("/{workout_id}/", response_model=Union[WorkoutOut, Error])
