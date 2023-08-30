@@ -1,3 +1,12 @@
+## 30 Aug 2023
+
+List of feature
+
+- Modified the Home.css and added necessary styling for ViewWorkout and ListWorkout
+
+Ah-ha
+Can easily change text color and background with Boostrap.
+
 ## 25-29 Aug 2023
 
 List of feature
