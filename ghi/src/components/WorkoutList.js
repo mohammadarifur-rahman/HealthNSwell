@@ -3,7 +3,7 @@ import WorkoutCard from "./WorkoutCard";
 import NavLogIn from "./NavLogIn";
 import "./Home.css";
 
-function WorkoutList({setCurrentWorkout}) {
+function WorkoutList({ setCurrentWorkout }) {
   const [workoutList, setWorkoutList] = useState([]);
 
   async function loadWorkoutList() {
@@ -20,18 +20,24 @@ function WorkoutList({setCurrentWorkout}) {
   }, []);
 
   return (
-    <>
+    <div id="workout">
       <NavLogIn />
-      <div className="container">
-        <h1>WorkOut List</h1>
-        <div className="row">
-          {workoutList &&
-            workoutList.map((workout) => (
-              <WorkoutCard setCurrentWorkout={setCurrentWorkout} workout={workout} key={workout.id}/>
-            ))}
+      <div className="card-form-workout">
+        <div className="container">
+          <h1>WorkOut List</h1>
+          <div className="row">
+            {workoutList &&
+              workoutList.map((workout) => (
+                <WorkoutCard
+                  setCurrentWorkout={setCurrentWorkout}
+                  workout={workout}
+                  key={workout.id}
+                />
+              ))}
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -294,3 +294,116 @@ h3 {
 .nav-link:hover {
   color: #fff;
 }
+
+.sudo-link:hover {
+  cursor: pointer;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+}
+
+.card-form-workout {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px auto;
+  width: 90%;
+  opacity: 0.8;
+  background-color: #000000;
+  border: 0.5px white solid;
+  /* padding: 40px 0; */
+}
+
+#workout {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-image: url("https://images.pexels.com/photos/6389887/pexels-photo-6389887.jpeg");
+}
+
+#workout h1 {
+  text-align: center;
+  color: #fff;
+  padding: 40px;
+}
+
+.card-body {
+  background-color: #fff;
+  color: black;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-body:hover {
+  transform: scale(1.05);
+}
+
+.card-body i {
+  font-size: 20px;
+  padding: 0 10px;
+  text-shadow: 2px 2px 5px #bdbdbd;
+}
+
+.btn-work-out {
+  width: 60%;
+  background-color: #dc5800;
+  color: #fff;
+}
+
+/* .material-symbols-outlined {
+  color: black;
+  padding: 10px;
+  font-size: 30px;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" -25, "opsz" 24;
+} */
+
+.sign-up-card {
+  border-radius: 0px;
+  max-width: 50%;
+  opacity: 0.9;
+  border: 0.5px rgb(255, 255, 255) solid;
+  background-color: black;
+  color: #fff;
+  padding: 20px 0;
+  margin: 20px auto;
+}
+
+.login-header form,
+label {
+  color: rgb(0, 0, 0) !important;
+}
+
+#workout-view {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-image: url("https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg");
+}
+
+.btn-work-out-single {
+  width: 30%;
+  background-color: #dc5800;
+  color: #fff;
+}
+
+/* #workout-view input.border-0,
+textarea.border-0 {
+  background-color: transparent !important;
+  color: #fff;
+} */

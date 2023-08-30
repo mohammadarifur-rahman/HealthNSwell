@@ -52,7 +52,7 @@ function WorkoutForm() {
     const workoutResponse = await fetch(workoutUrl, fetchOptions);
     if (workoutResponse.ok) {
       e.target.reset();
-      navigate("/");
+      navigate("/workouts");
     }
   };
   return (

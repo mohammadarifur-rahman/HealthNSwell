@@ -80,7 +80,7 @@ class ExerciseRepository:
             print(e)
             return {"message": "Could not update exercise"}
 
-    def get_all(self) -> Union[Error, List[ExerciseOut]]:
+    def get_all(self, workout_id: int) -> Union[Error, List[ExerciseOut]]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -95,8 +95,10 @@ class ExerciseRepository:
                         , rest_between_exercises
                         , workout
                         FROM exercises
+                        WHERE workout = %s
                         ORDER BY id;
-                        """
+                        """,
+                        [workout_id],
                     )
                     return [
                         ExerciseOut(

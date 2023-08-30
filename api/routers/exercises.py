@@ -1,7 +1,12 @@
 from fastapi import APIRouter, Depends, Response
 from authenticator import authenticator
 from typing import List, Union, Optional
-from queries.exercises import Error, ExerciseIn, ExerciseRepository, ExerciseOut
+from queries.exercises import (
+    Error,
+    ExerciseIn,
+    ExerciseRepository,
+    ExerciseOut,
+)
 
 router = APIRouter()
 
@@ -16,13 +21,14 @@ async def create_exercises(
         return repo.create(exercise)
 
 
-@router.get("/", response_model=Union[List[ExerciseOut], Error])
+@router.get("/{workout_id}/", response_model=Union[List[ExerciseOut], Error])
 async def get_all(
+    workout_id: int,
     repo: ExerciseRepository = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     if account_data:
-        return repo.get_all()
+        return repo.get_all(workout_id)
 
 
 @router.put("/{exercise_id}/", response_model=Union[ExerciseOut, Error])

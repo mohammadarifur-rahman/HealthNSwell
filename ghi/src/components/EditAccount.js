@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavSignUp from "./NavSignUp";
+import NavLogIn from "./NavLogIn";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import { useNavigate } from "react-router-dom";
 
@@ -84,7 +84,7 @@ function EditAccountForm() {
   };
   return (
     <div id="login">
-      <NavSignUp />
+      <NavLogIn />
       <div className="card-form">
         <div className="login-header">
           <i className="bi bi-person-circle"></i>
@@ -188,13 +188,9 @@ function EditAccountForm() {
             />
           </div>
         </form>
-        <div>
+        <div className="login-header login-footer">
           <p>Want to delete your Account?</p>
-          <button
-            className="login-header login-footer"
-            type="submit"
-            onClick={handleDeleteAccount}
-          >
+          <button className="btn" type="submit" onClick={handleDeleteAccount}>
             Delete
           </button>
         </div>

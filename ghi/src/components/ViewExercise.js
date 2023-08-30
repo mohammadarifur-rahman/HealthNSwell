@@ -151,9 +151,9 @@ function ViewExercise({ currentWorkout }) {
   }
 
   return (
-    <div className="container my-4">
-      <h1 className="display-5 fw-bold">Exercises</h1>
-      <table className="table table-striped">
+    <div className="container my-4 table-responsive">
+      <h1 className="display-5 fw-bold text-center text-light">Exercises</h1>
+      <table className="table table-striped table-dark">
         <thead>
           <tr className="bg-success">
             <th className="text-dark text-center">Name</th>
@@ -162,6 +162,7 @@ function ViewExercise({ currentWorkout }) {
             <th className="text-dark text-center">Weight</th>
             <th className="text-dark text-center">Rest Between Sets</th>
             <th className="text-dark text-center">Rest Between Reps</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -274,7 +275,7 @@ function ViewExercise({ currentWorkout }) {
                   <td>
                     <div className="d-grid gap-4 d-flex mx-4 justify-content-md-center">
                       <button
-                        className="btn w-50 btn-warning fw-bold btn-sm d-md-block text-light shadow-sm"
+                        className="btn"
                         onClick={() => handleUpdateExercise(exercise.id)}
                         variant="outline-dark"
                       >
@@ -283,7 +284,7 @@ function ViewExercise({ currentWorkout }) {
 
                       {exercise.id === selected ? (
                         <button
-                          className="btn w-50 btn-success fw-bold btn-sm d-md-block text-light shadow-sm"
+                          className="btn"
                           onClick={() =>
                             handleSendRequest(exercise.id, exercise.workout)
                           }
@@ -293,7 +294,7 @@ function ViewExercise({ currentWorkout }) {
                         </button>
                       ) : (
                         <button
-                          className="btn w-50 btn-danger fw-bold btn-sm d-md-block text-light shadow-sm"
+                          className="btn"
                           onClick={() => handleDeleteExercise(exercise.id)}
                           variant="outline-dark"
                         >
@@ -319,7 +320,7 @@ function ViewExercise({ currentWorkout }) {
               <td>
                 <div>
                   <button
-                    className="btn btn-success fw-bold"
+                    className="btn btn-work-out"
                     onClick={() => setAddExercise(true)}
                     type="button"
                   >
@@ -401,14 +402,14 @@ function ViewExercise({ currentWorkout }) {
               <td>
                 <div>
                   <button
-                    className="btn w-50 btn-danger fw-bold"
+                    className="btn"
                     onClick={() => setAddExercise(false)}
                     type="button"
                   >
                     Cancel
                   </button>
                   <button
-                    className="btn w-50 btn-success fw-bold"
+                    className="btn"
                     onClick={() => handleCreateExercise()}
                     variant="outline-dark"
                   >

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Home.css";
 import useToken from "@galvanize-inc/jwtdown-for-react";
+import { useNavigate } from "react-router-dom";
 
 function NavLogIn() {
   const { logout } = useToken();
   const [first, setFirst] = useState("");
+  const navigate = useNavigate();
 
   const handleFirst = async (e) => {
     const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
@@ -18,6 +20,11 @@ function NavLogIn() {
   useEffect(() => {
     handleFirst();
   }, []);
+
+  const logOut = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <>
@@ -44,7 +51,7 @@ function NavLogIn() {
             >
               <ul className="navbar-nav ms-auto">
                 <li className="btn-sign">
-                  <Link className="nav-link" to="/workouts/view">
+                  <Link className="nav-link" to="/workouts">
                     View Workouts
                   </Link>
                 </li>
@@ -64,23 +71,29 @@ function NavLogIn() {
                       <span>Hello, {first}</span>
                     </button>
                     <ul className="dropdown-menu">
-                      <li>
+                      {/* <li>
                         <Link className="dropdown-item" to="#">
                           {" "}
                           <i className="bi bi-person-fill"></i>My Profile
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
-                        <Link className="dropdown-item" to="accounts/edit">
+                        <div
+                          className="dropdown-item sudo-link"
+                          onClick={() => navigate("/accounts/edit")}
+                        >
                           {" "}
                           <i className="bi bi-gear"></i>Update Profile
-                        </Link>
+                        </div>
                       </li>
                       <li>
-                        <Link className="dropdown-item" onClick={logout}>
+                        <div
+                          className="dropdown-item sudo-link"
+                          onClick={logOut}
+                        >
                           {" "}
                           <i className="bi bi-door-open"></i>Log out
-                        </Link>
+                        </div>
                       </li>
                     </ul>
                   </div>
