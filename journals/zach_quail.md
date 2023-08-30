@@ -4,7 +4,7 @@ List of feature
 
 - Modified the Home.css and added necessary styling for ViewWorkout and ListWorkout
 - Fixed WorkoutsList to filter by account id
-- Added get all workouts unit test
+- Added get all accounts unit test
 
 Ah-ha
 Can easily change text color and background with Boostrap.
