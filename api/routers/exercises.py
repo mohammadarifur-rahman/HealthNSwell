@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends
 from authenticator import authenticator
 from typing import List, Union, Optional
 from queries.exercises import (

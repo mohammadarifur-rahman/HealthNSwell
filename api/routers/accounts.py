@@ -68,7 +68,10 @@ async def create_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.put("/api/accounts/{account_id}", response_model=Union[AccountOut, Error])
+@router.put("/api/accounts/{account_id}", response_model=Union[
+    AccountOut,
+    Error
+])
 async def update_accounts(
     info: AccountIn,
     account_id: int,

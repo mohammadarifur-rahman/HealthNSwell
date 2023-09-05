@@ -1,6 +1,11 @@
 from typing import Optional, Union, List
 from queries.pool import pool
-from models.accounts import AccountIn, AccountOut, Error, AccountOutWithPassword
+from models.accounts import (
+    AccountIn,
+    AccountOut,
+    Error,
+    AccountOutWithPassword
+)
 
 
 class AccountRepository:
@@ -30,13 +35,25 @@ class AccountRepository:
             print(e)
             return {"message": "Could not get that account"}
 
-    def create(self, account: AccountIn, hashed_password: str) -> Union[AccountOutWithPassword, Error]:
+    def create(self, account: AccountIn, hashed_password: str) -> Union[
+        AccountOutWithPassword,
+        Error
+    ]:
         with pool.connection() as conn:
             with conn.cursor() as db:
                 result = db.execute(
                     """
                     INSERT INTO accounts
-                        (email, first_name, last_name, height, weight, age, sex, hashed_password)
+                        (
+                            email,
+                            first_name,
+                            last_name,
+                            height,
+                            weight,
+                            age,
+                            sex,
+                            hashed_password
+                        )
                     VALUES
                         (%s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;
@@ -141,7 +158,6 @@ class AccountRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not get all accounts"}
-
 
     def account_in_to_out(self, id: int, account: AccountIn):
         old_data = account.dict()
