@@ -11,10 +11,14 @@ import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
   const domain = /https:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, "");
+  //May just be empty string
+  const basename = process.env.PUBLIC_URL.replace(
+    domain,
+    "/module3-project-gamma"
+  );
   const baseUrl = process.env.REACT_APP_API_HOST;
 
-  const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", '');
+  const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", "");
 
   return (
     <BrowserRouter basename={basename}>
@@ -29,9 +33,15 @@ function App() {
           </Route>
 
           <Route path="workouts">
-            <Route index element={<WorkoutList setCurrentWorkout={setCurrentWorkout}/>} />
+            <Route
+              index
+              element={<WorkoutList setCurrentWorkout={setCurrentWorkout} />}
+            />
             <Route path="create" element={<CreateWorkout />} />
-            <Route path="view" element={<ViewWorkout currentWorkout={currentWorkout}/>} />
+            <Route
+              path="view"
+              element={<ViewWorkout currentWorkout={currentWorkout} />}
+            />
           </Route>
         </Routes>
       </AuthProvider>

@@ -34,7 +34,7 @@ function ViewWorkout({ currentWorkout }) {
     data.activity_name = workoutActivityName;
     data.account = workout.account;
 
-    const url = `${process.env.REACT_APP_API_HOST}/api/workouts/${workout.id}/`;
+    const url = `${process.env.REACT_APP_API_HOST}/api/workouts/${workout.id}`;
     const fetchOptions = {
       method: "put",
       body: JSON.stringify(data),
@@ -62,7 +62,7 @@ function ViewWorkout({ currentWorkout }) {
   // ------------- END OF setEditWorkoutFalse function -------------
 
   async function handleDeleteWorkout() {
-    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/${currentWorkout.id}/`;
+    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/${currentWorkout.id}`;
     const fetchOptions = {
       method: "delete",
       headers: {

@@ -39,7 +39,7 @@ function EditAccountForm() {
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}`;
     const fetchOptions = {
       method: "delete",
       headers: {
@@ -75,7 +75,7 @@ function EditAccountForm() {
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}`;
     const accountResponse = await fetch(accountUrl, fetchOptions);
     if (accountResponse.ok) {
       e.target.reset();

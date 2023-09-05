@@ -31,7 +31,7 @@ function NavLogIn() {
       <section id="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/">
+            <NavLink className="navbar-brand" to="">
               Health & Swollenness
             </NavLink>
             <button
