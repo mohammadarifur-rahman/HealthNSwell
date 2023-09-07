@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import AccountForm from "./components/AccountForm";
 import LoginForm from "./components/LoginForm";
@@ -6,7 +6,7 @@ import EditAccount from "./components/EditAccount";
 import WorkoutList from "./components/WorkoutList";
 import CreateWorkout from "./components/CreateWorkout";
 import ViewWorkout from "./components/ViewWorkout";
-import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
+import { AuthProvider, useAuthContext } from "@galvanize-inc/jwtdown-for-react";
 import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
@@ -15,6 +15,14 @@ function App() {
   const baseUrl = process.env.REACT_APP_API_HOST;
 
   const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", '');
+
+  function ProtectedRoute({ element }) {
+    const { token } = useAuthContext();
+    if (!token) {
+      return <Navigate to="/" replace />;
+    }
+    return element;
+  };
 
   return (
     <BrowserRouter basename={basename}>
@@ -25,13 +33,13 @@ function App() {
           <Route path="accounts">
             <Route index element={<LoginForm />} />
             <Route path="signup" element={<AccountForm />} />
-            <Route path="edit" element={<EditAccount />} />
+            <Route path="edit" element={<ProtectedRoute element={<EditAccount />} />} />
           </Route>
 
           <Route path="workouts">
-            <Route index element={<WorkoutList setCurrentWorkout={setCurrentWorkout}/>} />
-            <Route path="create" element={<CreateWorkout />} />
-            <Route path="view" element={<ViewWorkout currentWorkout={currentWorkout}/>} />
+            <Route index element={<ProtectedRoute element={<WorkoutList setCurrentWorkout={setCurrentWorkout}/>} />} />
+            <Route path="create" element={<ProtectedRoute element={<CreateWorkout />} />} />
+            <Route path="view" element={<ProtectedRoute element={<ViewWorkout currentWorkout={currentWorkout}/>} />} />
           </Route>
         </Routes>
       </AuthProvider>

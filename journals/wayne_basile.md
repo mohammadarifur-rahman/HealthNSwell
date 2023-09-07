@@ -1,3 +1,26 @@
+## 6 Sep 2023
+
+List of feature
+
+- Protected routes in App.js
+- Added CSS for Home page
+- Fixed a bug in LogIn page that was showing the premature error message
+- Fixed NavLogIn returning uncaught promise after logout
+- Fixed NavLogIn trying to get token data when it was null.
+
+Ah-ha
+We needed to make our own function for the protected routes.
+
+
+## 5 Sep 2023
+
+List of feature
+
+- Refactored application for deployment
+
+Ah-ha
+Deployment present many challenges.
+
 ## 30 Aug 2023
 
 List of feature

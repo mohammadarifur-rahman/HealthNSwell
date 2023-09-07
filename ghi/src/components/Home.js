@@ -13,13 +13,18 @@ function Home() {
       <section id="banner">
         <div className="container">
           <div className="banner-title-div">
-            <p className="banner-title">Welcome to our Website</p>
-            <p>
-              Placeholder text<i className="bi bi-pencil"></i>
-            </p>
+            <p className="banner-title">Welcome to Health and Swollenness</p>
+            <div className="banner-text">
+              <h4 className="fw-bold shadow-lg">
+                Get ready to take control of your fitness journey like never
+                before! Our user-friendly web application is your one-stop
+                destination for creating and managing personalized workout
+                routines tailored to your fitness goals.
+              </h4>
+            </div>
             <form action="/accounts/signup">
               <button className="btn btn-sing-up" type="submit">
-                Sign up
+                Join Now
               </button>
             </form>
           </div>

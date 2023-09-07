@@ -13,15 +13,17 @@ function NavLogIn() {
     const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
-    const first_name = tokenData.account.first_name;
-    setFirst(first_name);
+    if (tokenData) {
+      const first_name = tokenData.account.first_name
+      setFirst(first_name);
+    };
   };
 
   useEffect(() => {
     handleFirst();
   }, []);
 
-  const logOut = () => {
+  function logOut() {
     logout();
     navigate("/");
   };

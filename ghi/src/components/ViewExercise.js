@@ -29,7 +29,7 @@ function ViewExercise({ currentWorkout }) {
 
   useEffect(() => {
     loadExercises();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleDeleteExercise(id) {
     setBadReq(false);
@@ -77,7 +77,6 @@ function ViewExercise({ currentWorkout }) {
       setSelected("");
       loadExercises();
     } else {
-      const json = await exerciseResponse.json();
       setBadReq(true);
     }
   }
@@ -156,12 +155,12 @@ function ViewExercise({ currentWorkout }) {
       <table className="table table-striped table-dark">
         <thead>
           <tr className="bg-success">
-            <th className="text-dark text-center">Name</th>
-            <th className="text-dark text-center">Sets</th>
-            <th className="text-dark text-center">Reps</th>
-            <th className="text-dark text-center">Weight</th>
-            <th className="text-dark text-center">Rest Between Sets</th>
-            <th className="text-dark text-center">Rest Between Reps</th>
+            <th className="text-light text-center fs-5">Name</th>
+            <th className="text-light text-center fs-5">Sets</th>
+            <th className="text-light text-center fs-5">Reps</th>
+            <th className="text-light text-center fs-5">Weight</th>
+            <th className="text-light text-center fs-5">Rest Between Sets</th>
+            <th className="text-light text-center fs-5">Rest Between Reps</th>
             <th></th>
           </tr>
         </thead>
@@ -170,7 +169,7 @@ function ViewExercise({ currentWorkout }) {
             exercises.map((exercise) => {
               return (
                 <tr key={exercise.id} value={exercise.id}>
-                  <td>
+                  <td className="text-center fw-bold">
                     {selected === exercise.id ? (
                       <div className="form-group">
                         <input
@@ -187,7 +186,7 @@ function ViewExercise({ currentWorkout }) {
                     )}
                   </td>
 
-                  <td>
+                  <td className="text-center fw-bold">
                     {selected === exercise.id ? (
                       <div className="form-group">
                         <input
@@ -204,7 +203,7 @@ function ViewExercise({ currentWorkout }) {
                     )}
                   </td>
 
-                  <td>
+                  <td className="text-center fw-bold">
                     {selected === exercise.id ? (
                       <div className="form-group">
                         <input
@@ -221,7 +220,7 @@ function ViewExercise({ currentWorkout }) {
                     )}
                   </td>
 
-                  <td>
+                  <td className="text-center fw-bold">
                     {selected === exercise.id ? (
                       <div className="form-group">
                         <input
@@ -238,7 +237,7 @@ function ViewExercise({ currentWorkout }) {
                     )}
                   </td>
 
-                  <td>
+                  <td className="text-center fw-bold">
                     {selected === exercise.id ? (
                       <div className="form-group">
                         <input
@@ -255,7 +254,7 @@ function ViewExercise({ currentWorkout }) {
                     )}
                   </td>
 
-                  <td>
+                  <td className="text-center fw-bold">
                     {selected === exercise.id ? (
                       <div className="form-group">
                         <input
@@ -318,9 +317,9 @@ function ViewExercise({ currentWorkout }) {
               <td></td>
               <td></td>
               <td>
-                <div>
+                <div className="d-grid gap-4 d-flex mx-4 justify-content-md-center">
                   <button
-                    className="btn btn-work-out"
+                    className="btn btn-work-out w-75"
                     onClick={() => setAddExercise(true)}
                     type="button"
                   >

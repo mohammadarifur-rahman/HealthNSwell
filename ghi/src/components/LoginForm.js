@@ -16,7 +16,9 @@ const LoginForm = () => {
       navigate("/workouts");
     }
     if (!token && click) {
-      setError(true);
+      setTimeout(function () {
+        setError(true);
+      }, 2000);
     }
   }, [token, click, navigate]);
 
