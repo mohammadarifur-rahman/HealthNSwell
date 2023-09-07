@@ -74,7 +74,7 @@ def test_create_exercise():
         "rest_between_exercises": 0,
         "workout": 0,
     }
-    response = client.post("/api/exercises/", json=json)
+    response = client.post("/api/exercises", json=json)
     assert response.status_code == 200
     assert response.json() == expected
     app.dependency_overrides = {}

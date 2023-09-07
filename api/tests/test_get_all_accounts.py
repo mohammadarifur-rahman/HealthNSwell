@@ -44,7 +44,7 @@ def test_get_all_accounts():
     app.dependency_overrides[
         authenticator.get_current_account_data
     ] = fake_get_current_account_data
-    response = client.get("api/accounts/")
+    response = client.get("api/accounts")
     assert response.status_code == 200
     assert response.json() == []
     app.dependency_overrides = {}
