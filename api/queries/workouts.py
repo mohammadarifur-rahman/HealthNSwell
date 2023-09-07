@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from typing import List, Optional, Union
 from queries.pool import pool
 from models.workouts import WorkoutIn, WorkoutOut, Error
@@ -44,7 +43,9 @@ class WorkoutRepository:
             print(e)
             return False
 
-    def update(self, workout_id: int, workout: WorkoutIn) -> Union[WorkoutOut, Error]:
+    def update(
+        self, workout_id: int, workout: WorkoutIn
+    ) -> Union[WorkoutOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:

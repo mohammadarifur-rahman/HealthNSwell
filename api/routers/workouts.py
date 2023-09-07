@@ -16,7 +16,7 @@ async def create_workouts(
         return repo.create(workout)
 
 
-@router.get("/{account_id}/", response_model=Union[List[WorkoutOut], Error])
+@router.get("/{account_id}", response_model=Union[List[WorkoutOut], Error])
 async def get_all(
     account_id: int,
     repo: WorkoutRepository = Depends(),
@@ -26,7 +26,7 @@ async def get_all(
         return repo.get_all(account_id)
 
 
-@router.put("/{workout_id}/", response_model=Union[WorkoutOut, Error])
+@router.put("/{workout_id}", response_model=Union[WorkoutOut, Error])
 async def update_workout(
     workout_id: int,
     workout: WorkoutIn,
@@ -37,7 +37,7 @@ async def update_workout(
         return repo.update(workout_id, workout)
 
 
-@router.delete("/{workout_id}/", response_model=bool)
+@router.delete("/{workout_id}", response_model=bool)
 async def delete_workout(
     workout_id: int,
     repo: WorkoutRepository = Depends(),
@@ -47,7 +47,7 @@ async def delete_workout(
         return repo.delete(workout_id)
 
 
-@router.get("/{workout_id}/", response_model=Optional[WorkoutOut])
+@router.get("/{workout_id}", response_model=Optional[WorkoutOut])
 async def get_one_workout(
     workout_id: int,
     repo: WorkoutRepository = Depends(),

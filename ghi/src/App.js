@@ -11,10 +11,15 @@ import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
   const domain = /https:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, "");
+  //May just be empty string
+  const basename = process.env.PUBLIC_URL.replace(
+    domain,
+    "/module3-project-gamma"
+  );
+
   const baseUrl = process.env.REACT_APP_API_HOST;
 
-  const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", '');
+  const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", "");
 
   function ProtectedRoute({ element }) {
     const { token } = useAuthContext();
@@ -22,7 +27,7 @@ function App() {
       return <Navigate to="/" replace />;
     }
     return element;
-  };
+  }
 
   return (
     <BrowserRouter basename={basename}>
@@ -33,13 +38,35 @@ function App() {
           <Route path="accounts">
             <Route index element={<LoginForm />} />
             <Route path="signup" element={<AccountForm />} />
-            <Route path="edit" element={<ProtectedRoute element={<EditAccount />} />} />
+            <Route
+              path="edit"
+              element={<ProtectedRoute element={<EditAccount />} />}
+            />
           </Route>
 
           <Route path="workouts">
-            <Route index element={<ProtectedRoute element={<WorkoutList setCurrentWorkout={setCurrentWorkout}/>} />} />
-            <Route path="create" element={<ProtectedRoute element={<CreateWorkout />} />} />
-            <Route path="view" element={<ProtectedRoute element={<ViewWorkout currentWorkout={currentWorkout}/>} />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute
+                  element={
+                    <WorkoutList setCurrentWorkout={setCurrentWorkout} />
+                  }
+                />
+              }
+            />
+            <Route
+              path="create"
+              element={<ProtectedRoute element={<CreateWorkout />} />}
+            />
+            <Route
+              path="view"
+              element={
+                <ProtectedRoute
+                  element={<ViewWorkout currentWorkout={currentWorkout} />}
+                />
+              }
+            />
           </Route>
         </Routes>
       </AuthProvider>
