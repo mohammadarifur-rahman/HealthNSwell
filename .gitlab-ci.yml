@@ -9,6 +9,8 @@ api-unit-test-job:
   script:
     - cd api
     - pip install -r requirements.txt
+    - export DATABASE_URL='postgresql://example_user:secret@db/example'
+    - export SIGNING_KEY='764x4xdrgjie9277klk2tx32glwcblec3xar23b5'
     - python -m pytest # Run unit tests
 
 lint-test-job:
