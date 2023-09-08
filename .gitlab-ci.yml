@@ -39,7 +39,7 @@ build-front-end-job:
     - cp dist/index.html dist/404.html # make this a SPA
   artifacts:
     paths:
-      - ghi/build/ # Save all of the files in the build path
+      - ghi/dist/ # Save all of the files in the build path
 
 build-api-image:
   stage: build
@@ -69,7 +69,7 @@ pages:
   needs:
     - build-front-end-job
   script:
-    - mv ghi public
+    - mv ghi/dist public
   artifacts:
     paths:
       - public
