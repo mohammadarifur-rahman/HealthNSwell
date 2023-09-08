@@ -40,8 +40,13 @@ build-front-end-job:
   # artifacts:
   #   paths:
   #     - ghi/dist/ # Save all of the files in the build path
-  image: node:16.5.0
-  stage: deploy
+  stage: build
+  image: node:lts-bullseye
+  variables:
+    VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
+  needs:
+    - api-unit-test-job # These two jobs must succeed for
+    - lint-test-job # this build-job to run
   cache:
     key:
       files:
