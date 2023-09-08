@@ -66,7 +66,6 @@ function AccountForm() {
           className="row login-middle-row"
           onSubmit={(e) => handleSubmit(e)}
         >
-          {/* <div className="form-row"> */}
           <div className="column">
             <BootstrapInput
               id="firstname"
@@ -107,7 +106,6 @@ function AccountForm() {
               type="text"
             />
           </div>
-          {/* </div> */}
           <div className="account-submit">
             <input
               className="btn btn-sing-up btn-login-page"
