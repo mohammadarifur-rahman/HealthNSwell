@@ -12,8 +12,8 @@ import "./components/Home.css";
 
 function App() {
   const domain = /https?:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, "");
-  const baseUrl = process.env.REACT_APP_API_HOST;
+  const basename = import.meta.env.VITE_PUBLIC_URL;
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_HOST;
 
   const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", "");
 
