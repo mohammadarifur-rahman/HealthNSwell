@@ -1,5 +1,4 @@
 import React from "react";
-import "./Home.css";
 import AboutUS from "./img/AboutUs.png";
 import SampleWorkout from "./img/SampleWorkout.png";
 import DigitalJournal from "./img/DigitalJournal.png";

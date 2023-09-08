@@ -14,7 +14,6 @@ h3 {
   text-align: center;
 }
 
-/* ----for navigation----- */
 #nav-bar {
   position: sticky;
   top: 0;
@@ -88,10 +87,7 @@ h3 {
   padding: 10px 50px;
 }
 
-/* ----banner------ */
-
 #banner {
-  /* background-image: linear-gradient(to right,#373238, #2d0f3c ); */
   color: #fff;
   padding-top: 5%;
   background-image: url("https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
@@ -111,7 +107,7 @@ h3 {
 }
 
 .banner-title-div {
-  position: absolute; /*or fixed*/
+  position: absolute;
   left: 30px;
 }
 
@@ -126,14 +122,12 @@ h3 {
   text-shadow: 1px 1px 2px #000000;
 }
 
-/*--------- About Us section --------------*/
-
 .testimonial {
   margin-bottom: 5px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* grid-gap:20px; */
 }
+
 .testimonial .card {
   position: relative;
   border-radius: 0px;
@@ -203,7 +197,6 @@ h3 {
 .testimonial .nav {
   justify-content: center;
 }
-/*----- Account login ------*/
 
 #login {
   background-image: url("https://images.pexels.com/photos/841134/pexels-photo-841134.jpeg");
@@ -301,7 +294,6 @@ h3 {
 }
 
 .dropdown > .dropdown-toggle:active {
-  /*Without this, clicking will make it sticky*/
   pointer-events: none;
 }
 
@@ -337,7 +329,6 @@ h3 {
   opacity: 0.8;
   background-color: #000000;
   border: 0.5px white solid;
-  /* padding: 40px 0; */
 }
 
 #workout {
@@ -383,13 +374,6 @@ h3 {
   color: #fff;
 }
 
-/* .material-symbols-outlined {
-  color: black;
-  padding: 10px;
-  font-size: 30px;
-  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" -25, "opsz" 24;
-} */
-
 .sign-up-card {
   border-radius: 0px;
   max-width: 50%;
@@ -424,9 +408,3 @@ label {
   background-color: #dc5800;
   color: #fff;
 }
-
-/* #workout-view input.border-0,
-textarea.border-0 {
-  background-color: transparent !important;
-  color: #fff;
-} */

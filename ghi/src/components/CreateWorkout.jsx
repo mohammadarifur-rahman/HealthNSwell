@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavLogIn from "./NavLogIn";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
+
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props;
   return (

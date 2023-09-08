@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WorkoutCard from "./WorkoutCard";
 import NavLogIn from "./NavLogIn";
-import "./Home.css";
 
 function WorkoutList({ setCurrentWorkout }) {
   const [workoutList, setWorkoutList] = useState([]);

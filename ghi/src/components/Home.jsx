@@ -1,7 +1,6 @@
 import React from "react";
 import NavSignUp from "./NavSignUp";
 import ExampleWorkout from "./ExampleWorkout";
-import "./Home.css";
 import NavLogIn from "./NavLogIn";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 

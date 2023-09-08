@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
 
 function WorkoutCard({ setCurrentWorkout, workout }) {
   const navigate = useNavigate();
