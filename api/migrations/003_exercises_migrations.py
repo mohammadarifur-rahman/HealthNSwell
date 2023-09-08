@@ -1,6 +1,5 @@
 steps = [
     [
-        ## Create the table
         """
         CREATE TABLE exercises (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -13,7 +12,6 @@ steps = [
             workout INT REFERENCES WORKOUTS(id) ON DELETE CASCADE
         );
         """,
-        ## Drop the table
         """
         DROP TABLE exercises;
         """

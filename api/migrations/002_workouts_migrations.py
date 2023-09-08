@@ -1,6 +1,5 @@
 steps = [
     [
-        ## Create the table
         """
         CREATE TABLE workouts (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -11,7 +10,6 @@ steps = [
             account INT REFERENCES ACCOUNTS(id) ON DELETE CASCADE
         );
         """,
-        ## Drop the table
         """
         DROP TABLE workouts;
         """

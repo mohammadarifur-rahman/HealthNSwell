@@ -72,12 +72,6 @@ function NavLogIn() {
                       <span>Hello, {first}</span>
                     </button>
                     <ul className="dropdown-menu">
-                      {/* <li>
-                        <Link className="dropdown-item" to="#">
-                          {" "}
-                          <i className="bi bi-person-fill"></i>My Profile
-                        </Link>
-                      </li> */}
                       <li>
                         <div
                           className="dropdown-item sudo-link"

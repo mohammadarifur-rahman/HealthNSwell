@@ -22,6 +22,7 @@ function BootstrapInput(props) {
     </div>
   );
 }
+
 function WorkoutForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -68,7 +69,6 @@ function WorkoutForm() {
           className="row login-middle-row"
           onSubmit={(e) => handleSubmit(e)}
         >
-          {/* <div className="form-row"> */}
           <div className="column">
             <BootstrapInput
               id="workoutname"
@@ -109,7 +109,6 @@ function WorkoutForm() {
               type="text"
             />
           </div>
-          {/* </div> */}
           <div className="account-submit">
             <input
               className="btn btn-sing-up btn-login-page"

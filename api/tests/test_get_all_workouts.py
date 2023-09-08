@@ -19,7 +19,6 @@ class AccountOut(BaseModel):
     sex: Optional[str]
 
 
-# override authentication
 def fake_get_current_account_data():
     return AccountOut(
         id=1,
