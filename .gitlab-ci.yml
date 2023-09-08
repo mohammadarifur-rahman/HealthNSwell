@@ -36,7 +36,7 @@ build-front-end-job:
     - cd ghi
     - npm install
     - npm run build # Build the React application
-    - cp dist/index.html dist/404.html # make this a SPA
+    - cp -a dist/. public/
   artifacts:
     paths:
       - ghi/dist/ # Save all of the files in the build path
