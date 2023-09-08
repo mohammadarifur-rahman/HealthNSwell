@@ -11,6 +11,7 @@ import useLocalStorage from "./components/useLocalStorage";
 import "./components/Home.css";
 
 function App() {
+  // mdn regex -- [s] not working
   const domain = /https?:\/\/[^/]+/;
   const basename = process.env.PUBLIC_URL.replace(domain, "");
   const baseUrl = process.env.REACT_APP_API_HOST;

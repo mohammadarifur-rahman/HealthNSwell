@@ -22,7 +22,6 @@ function BootstrapInput(props) {
     </div>
   );
 }
-
 function EditAccountForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -72,7 +71,6 @@ function EditAccountForm() {
         "Content-Type": "application/json",
       },
     };
-
     const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
@@ -84,7 +82,6 @@ function EditAccountForm() {
       setSuccess(true);
     }
   };
-
   return (
     <div id="login">
       <NavLogIn />

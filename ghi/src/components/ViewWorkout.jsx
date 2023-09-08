@@ -14,6 +14,7 @@ function ViewWorkout({ currentWorkout }) {
   const navigate = useNavigate();
   const { token } = useToken();
 
+  // ------------- START OF GET workout function -------------
   useEffect(() => {
     setWorkout(currentWorkout);
     setWorkoutName(currentWorkout.name);
@@ -21,7 +22,9 @@ function ViewWorkout({ currentWorkout }) {
     setWorkoutDescription(currentWorkout.description);
     setWorkoutActivityName(currentWorkout.activity_name);
   }, [currentWorkout]);
+  // ------------- END OF GET workout function -------------
 
+  // ------------- START OF PUT workout function -------------
   const handleEditWorkout = async (e) => {
     e.preventDefault();
     const data = {};
@@ -45,7 +48,9 @@ function ViewWorkout({ currentWorkout }) {
       setEditWorkout(false);
     }
   };
+  // ------------- END OF PUT workout function -------------
 
+  // ------------- START OF setEditWorkoutFalse function -------------
   function setEditWorkoutFalse() {
     setEditWorkout(false);
     setWorkout(workout);
@@ -54,6 +59,7 @@ function ViewWorkout({ currentWorkout }) {
     setWorkoutDescription(workout.description);
     setWorkoutActivityName(workout.activity_name);
   }
+  // ------------- END OF setEditWorkoutFalse function -------------
 
   async function handleDeleteWorkout() {
     const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/${currentWorkout.id}/`;
@@ -77,6 +83,7 @@ function ViewWorkout({ currentWorkout }) {
         <div className="container">
           <div className="row">
             <div className="col"></div>
+            {/* ------------- START OF edit workout name ------------- */}
             <div className="col-10 p-4 my-5">
               <h1 className="display-5 fw-bold text-center text-light">
                 WorkOut
@@ -125,6 +132,7 @@ function ViewWorkout({ currentWorkout }) {
                   </>
                 )}
               </div>
+              {/* ------------- START OF edit workout activity name ------------- */}
               <div className="input-group input-group-md mb-3">
                 {editWorkout ? (
                   <input
@@ -147,6 +155,7 @@ function ViewWorkout({ currentWorkout }) {
                   />
                 )}
               </div>
+              {/* ------------- START OF edit workout duration ------------- */}
               <div className="input-group input-group-md mb-3">
                 {editWorkout ? (
                   <input
@@ -169,6 +178,7 @@ function ViewWorkout({ currentWorkout }) {
                   />
                 )}
               </div>
+              {/* ------------- START OF edit workout description ------------- */}
               <div className="input-group input-group-sm">
                 {editWorkout ? (
                   <textarea
@@ -193,6 +203,7 @@ function ViewWorkout({ currentWorkout }) {
                   />
                 )}
               </div>
+              {/* ------------- START OF edit workout description ------------- */}
               <div className="container center-content">
                 <button
                   className="btn btn-work-out-single"
