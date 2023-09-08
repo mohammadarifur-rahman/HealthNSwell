@@ -7,7 +7,7 @@ pages:
         - package-lock.json
       prefix: npm
     paths:
-      - ghi/node_modules/
+      - dist/node_modules/
   script:
     - cd ghi
     - npm install
