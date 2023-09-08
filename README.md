@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma">
-    <img src="logo.svg" alt="Logo" width="80" height="80">
+    <img src="ghi/public/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Health and Swollenness</h3>
@@ -119,7 +119,7 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 ## Roadmap
 
 - [ ] Add workout journal
-- [ ] Switch to Vite + React
+- [x] Switch to Vite + React
 - [ ] Use Redux Toolkit
 - [ ] Add websocket group chat
 - [ ] Add third part API for estimated calories burned
@@ -174,7 +174,7 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[project-screenshot]: ghi/public/screenshot.png 
+[project-screenshot]: ghi/public/screenshot.png
 
 [Fastapi.tiangolo.com]: https://img.shields.io/badge/Fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com/

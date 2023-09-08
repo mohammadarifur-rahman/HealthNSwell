@@ -4,7 +4,8 @@ List of feature
 - fix app to make sure windows users are not receiving any errors
 - create readme.md
 - add favicon.ico
-- start app deployment steps 
+- start app deployment steps
+- switched to vite + react application for front end
 
 
 ## 6 Sep 2023

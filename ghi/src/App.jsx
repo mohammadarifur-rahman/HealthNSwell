@@ -10,7 +10,8 @@ import { AuthProvider, useAuthContext } from "@galvanize-inc/jwtdown-for-react";
 import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
-  const domain = /https:\/\/[^/]+/;
+  // mdn regex -- [s] not working
+  const domain = /https?:\/\/[^/]+/;
   const basename = process.env.PUBLIC_URL.replace(domain, "");
   const baseUrl = process.env.REACT_APP_API_HOST;
 
