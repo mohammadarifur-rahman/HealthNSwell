@@ -43,7 +43,16 @@ class AccountRepository:
                 result = db.execute(
                     """
                     INSERT INTO accounts
-                        (email, first_name, last_name, height, weight, age, sex, hashed_password)
+                        (
+                            email,
+                            first_name,
+                            last_name,
+                            height,
+                            weight,
+                            age,
+                            sex,
+                            hashed_password
+                        )
                     VALUES
                         (%s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;

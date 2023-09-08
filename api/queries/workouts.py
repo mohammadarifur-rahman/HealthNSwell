@@ -43,7 +43,9 @@ class WorkoutRepository:
             print(e)
             return False
 
-    def update(self, workout_id: int, workout: WorkoutIn) -> Union[WorkoutOut, Error]:
+    def update(
+        self, workout_id: int, workout: WorkoutIn
+    ) -> Union[WorkoutOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:

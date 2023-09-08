@@ -38,7 +38,7 @@ router = APIRouter()
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: AccountOut = Depends(authenticator.try_get_current_account_data)
+    account: AccountOut = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
         return {
@@ -68,7 +68,9 @@ async def create_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.put("/api/accounts/{account_id}/", response_model=Union[AccountOut, Error])
+@router.put(
+    "/api/accounts/{account_id}/", response_model=Union[AccountOut, Error]
+)
 async def update_accounts(
     info: AccountIn,
     account_id: int,
