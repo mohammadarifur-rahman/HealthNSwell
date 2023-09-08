@@ -22,24 +22,41 @@ lint-test-job:
       # for code quality
 
 build-front-end-job:
-  # rules:
-  # Only run if pushing to the main branch
-  # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  stage: build
-  image: node:lts-bullseye
-  variables:
-    PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
-  needs:
-    - api-unit-test-job # These two jobs must succeed for
-    - lint-test-job # this build-job to run
-  script:
-    - cd ghi
-    - npm install
-    - npm run build # Build the React application
-    - cp -a dist/. public/
-  artifacts:
-    paths:
-      - ghi/dist/ # Save all of the files in the build path
+  # # rules:
+  # # Only run if pushing to the main branch
+  # # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  # stage: build
+  # image: node:lts-bullseye
+  # variables:
+  #   VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
+  # needs:
+  #   - api-unit-test-job # These two jobs must succeed for
+  #   - lint-test-job # this build-job to run
+  # script:
+  #   - cd ghi
+  #   - npm install
+  #   - npm run build # Build the React application
+  #   - cp -a dist/. public/
+  # artifacts:
+  #   paths:
+  #     - ghi/dist/ # Save all of the files in the build path
+  image: node:16.5.0
+  pages:
+    stage: deploy
+    cache:
+      key:
+        files:
+          - package-lock.json
+        prefix: npm
+      paths:
+        - node_modules/
+    script:
+      - npm install
+      - npm run build
+      - cp -a dist/. public/
+    artifacts:
+      paths:
+        - public
 
 build-api-image:
   stage: build
