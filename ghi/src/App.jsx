@@ -12,7 +12,7 @@ import "./components/Home.css";
 
 function App() {
   const domain = /https?:\/\/[^/]+/;
-  const basename = import.meta.env.VITE_PUBLIC_URL;
+  const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "");
   const baseUrl = import.meta.env.VITE_REACT_APP_API_HOST;
 
   const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", "");
