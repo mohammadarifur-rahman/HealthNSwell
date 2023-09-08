@@ -35,11 +35,11 @@ function EditAccountForm() {
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
   async function handleDeleteAccount() {
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
     const fetchOptions = {
       method: "delete",
       headers: {
@@ -71,11 +71,11 @@ function EditAccountForm() {
         "Content-Type": "application/json",
       },
     };
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
     const accountResponse = await fetch(accountUrl, fetchOptions);
     if (accountResponse.ok) {
       e.target.reset();

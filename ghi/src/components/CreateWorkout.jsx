@@ -35,12 +35,12 @@ function WorkoutForm() {
     data.description = description;
     data.duration = duration;
     data.activity_name = activity_name;
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
     data.account = accountId;
-    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/`;
+    const workoutUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/workouts/`;
     const fetchOptions = {
       method: "post",
       body: JSON.stringify(data),
