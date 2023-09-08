@@ -14,9 +14,9 @@ function NavLogIn() {
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     if (tokenData) {
-      const first_name = tokenData.account.first_name
+      const first_name = tokenData.account.first_name;
       setFirst(first_name);
-    };
+    }
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function NavLogIn() {
   function logOut() {
     logout();
     navigate("/");
-  };
+  }
 
   return (
     <>
