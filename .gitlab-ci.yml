@@ -13,6 +13,7 @@ pages:
     - npm install
     - npm run build
     - cp -a dist/. public/
+    - mv ghi/dist public
   artifacts:
     paths:
-      - ghi/dist/
+      - public
