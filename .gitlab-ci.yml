@@ -15,4 +15,4 @@ pages:
     - cp -a dist/. public/
   artifacts:
     paths:
-      - ghi/public/
+      - ghi/dist/
