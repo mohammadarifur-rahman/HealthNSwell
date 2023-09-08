@@ -1,18 +1,13 @@
-image: node:16.5.0
-pages:
-  stage: deploy
-  cache:
-    key:
-      files:
-        - package-lock.json
-      prefix: npm
-    paths:
-      - node_modules/
+build-front-end-job:
+  stage: build
+  image: node:lts-bullseye
+  variables:
+    PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
   script:
     - cd ghi
     - npm install
-    - npm run build
+    - npm run build # Build the React application
     - cp -a dist/. public/
   artifacts:
     paths:
-      - public
+      - ghi/dist/ # Save all of the files in the build path
