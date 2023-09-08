@@ -31,7 +31,7 @@ def fake_get_current_account_data():
         weight=180,
         age=35,
         sex="male",
-        )
+    )
 
 
 class MockWorkoutRepository:
@@ -42,7 +42,7 @@ class MockWorkoutRepository:
             "description": "string",
             "duration": "string",
             "activity_name": "string",
-            "account": 0
+            "account": 0,
         }
         result.update(workout)
         return result
@@ -50,13 +50,15 @@ class MockWorkoutRepository:
 
 def test_create_workout():
     app.dependency_overrides[WorkoutRepository] = MockWorkoutRepository
-    app.dependency_overrides[authenticator.get_current_account_data] = fake_get_current_account_data
+    app.dependency_overrides[
+        authenticator.get_current_account_data
+    ] = fake_get_current_account_data
     json = {
         "name": "string",
         "description": "string",
         "duration": "string",
         "activity_name": "string",
-        "account": 0
+        "account": 0,
     }
     expected = {
         "id": 0,
@@ -64,7 +66,7 @@ def test_create_workout():
         "description": "string",
         "duration": "string",
         "activity_name": "string",
-        "account": 0
+        "account": 0,
     }
     response = client.post("/api/workouts/", json=json)
     assert response.status_code == 200

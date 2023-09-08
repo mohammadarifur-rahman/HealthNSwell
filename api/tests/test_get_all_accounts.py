@@ -31,7 +31,8 @@ def fake_get_current_account_data():
         weight=180,
         age=35,
         sex="male",
-        )
+    )
+
 
 class MockAccountRepository:
     def get_all(self):
@@ -40,7 +41,9 @@ class MockAccountRepository:
 
 def test_get_all_accounts():
     app.dependency_overrides[AccountRepository] = MockAccountRepository
-    app.dependency_overrides[authenticator.get_current_account_data] = fake_get_current_account_data
+    app.dependency_overrides[
+        authenticator.get_current_account_data
+    ] = fake_get_current_account_data
     response = client.get("api/accounts/")
     assert response.status_code == 200
     assert response.json() == []

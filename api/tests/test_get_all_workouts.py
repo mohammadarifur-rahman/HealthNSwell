@@ -30,7 +30,7 @@ def fake_get_current_account_data():
         weight=180,
         age=35,
         sex="male",
-        )
+    )
 
 
 account_id = 1
@@ -43,7 +43,9 @@ class MockWorkoutRepository:
 
 def test_get_all_workouts():
     app.dependency_overrides[WorkoutRepository] = MockWorkoutRepository
-    app.dependency_overrides[authenticator.get_current_account_data] = fake_get_current_account_data
+    app.dependency_overrides[
+        authenticator.get_current_account_data
+    ] = fake_get_current_account_data
     response = client.get(f"api/workouts/{account_id}/")
     assert response.status_code == 200
     assert response.json() == []
