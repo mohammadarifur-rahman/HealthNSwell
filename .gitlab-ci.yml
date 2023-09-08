@@ -1,9 +1,5 @@
-stages:
-  - build # Run build after tests
-  - deploy # Run deploy after build
-
 build-front-end-job:
-  stage: build
+  stage: deploy
   image: node:lts-bullseye
   variables:
     PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
@@ -12,16 +8,7 @@ build-front-end-job:
     - npm install
     - npm run build # Build the React application
     - cp -a dist/. public/
-  artifacts:
-    paths:
-      - ghi/dist/ # Save all of the files in the build path
-
-pages:
-  stage: deploy
-  dependencies:
-    - build-front-end-job
-  script:
     - mv ghi/dist public
   artifacts:
     paths:
-      - public
+      - ghi/dist/ # Save all of the files in the build path
