@@ -10,9 +10,6 @@ build-front-end-job:
   image: node:lts-bullseye
   variables:
     PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
-  needs:
-    - api-unit-test-job # These two jobs must succeed for
-    - lint-test-job # this build-job to run
   script:
     - cd ghi
     - npm install
