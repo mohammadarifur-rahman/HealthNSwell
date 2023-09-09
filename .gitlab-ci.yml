@@ -5,8 +5,6 @@ stages:
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
-  variables:
-    PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
   script:
     - cd ghi
     - npm install
