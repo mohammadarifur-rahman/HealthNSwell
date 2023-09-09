@@ -29,7 +29,7 @@ function App() {
     <BrowserRouter basename={basename}>
       <AuthProvider baseUrl={baseUrl}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/module3-project-gamma/" element={<Home />} />
 
           <Route path="accounts">
             <Route index element={<LoginForm />} />
