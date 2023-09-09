@@ -10,7 +10,7 @@ function NavLogIn() {
   const navigate = useNavigate();
 
   const handleFirst = async (e) => {
-    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     if (tokenData) {
@@ -25,7 +25,7 @@ function NavLogIn() {
 
   function logOut() {
     logout();
-    navigate("/module3-project-gamma/");
+    navigate("/");
   }
 
   return (
@@ -33,7 +33,7 @@ function NavLogIn() {
       <section id="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/module3-project-gamma/">
+            <NavLink className="navbar-brand" to="/">
               Health & Swollenness
             </NavLink>
             <button
@@ -53,12 +53,12 @@ function NavLogIn() {
             >
               <ul className="navbar-nav ms-auto">
                 <li className="btn-sign">
-                  <Link className="nav-link" to="/module3-project-gamma/workouts">
+                  <Link className="nav-link" to="/workouts">
                     View Workouts
                   </Link>
                 </li>
                 <li className="btn-sign">
-                  <Link className="nav-link" to="/module3-project-gamma/workouts/create">
+                  <Link className="nav-link" to="/workouts/create">
                     Create Workout
                   </Link>
                 </li>
@@ -82,7 +82,7 @@ function NavLogIn() {
                       <li>
                         <div
                           className="dropdown-item sudo-link"
-                          onClick={() => navigate("/module3-project-gamma/accounts/edit")}
+                          onClick={() => navigate("/accounts/edit")}
                         >
                           {" "}
                           <i className="bi bi-gear"></i>Update Profile

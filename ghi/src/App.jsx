@@ -20,7 +20,7 @@ function App() {
   function ProtectedRoute({ element }) {
     const { token } = useAuthContext();
     if (!token) {
-      return <Navigate to="/module3-project-gamma" replace />;
+      return <Navigate to="/" replace />;
     }
     return element;
   }
@@ -29,9 +29,9 @@ function App() {
     <BrowserRouter basename={basename}>
       <AuthProvider baseUrl={baseUrl}>
         <Routes>
-          <Route path="/module3-project-gamma" element={<Home />} />
+          <Route path="/" element={<Home />} />
 
-          <Route path="/module3-project-gamma/accounts">
+          <Route path="accounts">
             <Route index element={<LoginForm />} />
             <Route path="signup" element={<AccountForm />} />
             <Route
@@ -40,7 +40,7 @@ function App() {
             />
           </Route>
 
-          <Route path="/module3-project-gamma/workouts">
+          <Route path="workouts">
             <Route
               index
               element={

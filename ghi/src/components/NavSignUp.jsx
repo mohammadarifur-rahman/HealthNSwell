@@ -8,7 +8,7 @@ function NavSignUp() {
       <section id="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/module3-project-gamma">
+            <NavLink className="navbar-brand" to="/">
               Health & Swollenness
             </NavLink>
             <button
@@ -28,14 +28,14 @@ function NavSignUp() {
             >
               <ul className="navbar-nav ms-auto">
                 <li>
-                  <form action="/module3-project-gamma/accounts">
+                  <form action="/accounts">
                     <button className="btn-sign" type="submit">
                       Sign in
                     </button>
                   </form>
                 </li>
                 <li>
-                  <form action="/module3-project-gamma/accounts/signup">
+                  <form action="/accounts/signup">
                     <button className="btn" type="submit">
                       Join Now
                     </button>
