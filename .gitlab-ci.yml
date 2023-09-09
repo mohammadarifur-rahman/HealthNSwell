@@ -3,9 +3,6 @@ stages:
   - deploy # Run deploy after build
 
 build-front-end-job:
-  # rules:
-  # Only run if pushing to the main branch
-  # - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: build
   image: node:lts-bullseye
   variables:
