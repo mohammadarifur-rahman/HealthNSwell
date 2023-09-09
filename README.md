@@ -118,6 +118,7 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 <!-- ROADMAP -->
 ## Roadmap
 
+- [ ] Deploy project
 - [ ] Add workout journal
 - [x] Switch to Vite + React
 - [ ] Use Redux Toolkit
