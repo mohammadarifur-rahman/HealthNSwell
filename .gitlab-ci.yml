@@ -54,10 +54,6 @@ build-api-image:
   only:
     - main
 
-# This is an easy way to deploy a React app using GitLab
-# Pages. Then, you can access your application from
-# gitlab.io.
-
 pages:
   stage: deploy
   # rules:
