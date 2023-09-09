@@ -38,7 +38,7 @@ function AccountForm() {
     data.first_name = firstname;
     data.last_name = lastname;
     data.password = password;
-    const accountUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/accounts/`;
+    const accountUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/accounts`;
     const fetchOptions = {
       method: "post",
       body: JSON.stringify(data),
@@ -50,7 +50,7 @@ function AccountForm() {
     if (accountResponse.ok) {
       e.target.reset();
       login(email, password);
-      navigate("/module3-project-gamma/");
+      navigate("/module3-project-gamma");
     }
   };
 

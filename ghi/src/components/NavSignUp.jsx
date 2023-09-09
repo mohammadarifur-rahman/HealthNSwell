@@ -8,7 +8,7 @@ function NavSignUp() {
       <section id="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/module3-project-gamma/">
+            <NavLink className="navbar-brand" to="/module3-project-gamma">
               Health & Swollenness
             </NavLink>
             <button

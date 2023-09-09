@@ -23,7 +23,7 @@ lint-test-job:
 
 build-front-end-job:
   image: node:16.5.0
-  variables: https://the-stay-at-homies.gitlab.io/module3-project-gamma/
+  variables: https://the-stay-at-homies.gitlab.io/module3-project-gamma
     GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/api
   stage: build
   cache:
