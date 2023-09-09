@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from typing import List, Optional, Union
 from queries.pool import pool
 from models.exercises import ExerciseIn, ExerciseOut, Error
@@ -123,7 +122,14 @@ class ExerciseRepository:
                 result = db.execute(
                     """
                     INSERT INTO exercises
-                        (name, sets, reps, weight, rest_between_sets, rest_between_exercises, workout)
+                        (
+                            name,
+                            sets,
+                            reps,
+                            weight,
+                            rest_between_sets,
+                            rest_between_exercises,
+                            workout)
                     VALUES
                         (%s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;
