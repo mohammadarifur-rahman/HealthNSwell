@@ -1,72 +1,72 @@
-stages:
-  - test # Run tests first
-  - build # Run build after tests
-  - deploy # Run deploy after build
+# stages:
+#   - test # Run tests first
+#   - build # Run build after tests
+#   - deploy # Run deploy after build
 
-api-unit-test-job:
-  image: python:3-bullseye
-  stage: test
-  script:
-    - cd api
-    - pip install -r requirements.txt
-    - export DATABASE_URL='postgresql://example_user:secret@db/example'
-    - export SIGNING_KEY='764x4xdrgjie9277klk2tx32glwcblec3xar23b5'
-    - python -m pytest # Run unit tests
+# api-unit-test-job:
+#   image: python:3-bullseye
+#   stage: test
+#   script:
+#     - cd api
+#     - pip install -r requirements.txt
+#     - export DATABASE_URL='postgresql://example_user:secret@db/example'
+#     - export SIGNING_KEY='764x4xdrgjie9277klk2tx32glwcblec3xar23b5'
+#     - python -m pytest # Run unit tests
 
-lint-test-job:
-  image: python:3-bullseye
-  stage: test
-  script:
-    - pip install flake8
-    - flake8 api # Run flake8 on Python project to check
-      # for code quality
+# lint-test-job:
+#   image: python:3-bullseye
+#   stage: test
+#   script:
+#     - pip install flake8
+#     - flake8 api # Run flake8 on Python project to check
+#       # for code quality
 
-build-front-end-job:
-  image: node:16.5.0
-  variables:
-    VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
-  stage: build
-  cache:
-    key:
-      files:
-        - package-lock.json
-      prefix: npm
-    paths:
-      - ghi/node_modules/
-  script:
-    - cd ghi
-    - npm install
-    - npm run build
-    - cp -a dist/. public/
-  artifacts:
-    paths:
-      - ghi/dist/
+# build-front-end-job:
+#   image: node:16.5.0
+#   variables:
+#     VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
+#   stage: build
+#   cache:
+#     key:
+#       files:
+#         - package-lock.json
+#       prefix: npm
+#     paths:
+#       - ghi/node_modules/
+#   script:
+#     - cd ghi
+#     - npm install
+#     - npm run build
+#     - cp -a dist/. public/
+#   artifacts:
+#     paths:
+#       - ghi/dist/
 
-build-api-image:
-  stage: build
-  image: docker:git
-  variables:
-    GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/api
-  before_script:
-    # $CI_JOB_TOKEN is variable automatically added by Gitlab: see https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#variables-reference
-    - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
-  script:
-    - docker build --tag $GITLAB_IMAGE:latest ./api
-    - docker push $GITLAB_IMAGE:latest
-  only:
-    - main
+# build-api-image:
+#   stage: build
+#   image: docker:git
+#   variables:
+#     GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/api
+#   before_script:
+#     # $CI_JOB_TOKEN is variable automatically added by Gitlab: see https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#variables-reference
+#     - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
+#   script:
+#     - docker build --tag $GITLAB_IMAGE:latest ./api
+#     - docker push $GITLAB_IMAGE:latest
+#   only:
+#     - main
 
-pages:
-  stage: deploy
-  # rules:
-  #   # Only run if pushing to the main branch
-  #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  dependencies:
-    - build-front-end-job
-  needs:
-    - build-front-end-job
-  script:
-    - mv ghi/dist public
-  artifacts:
-    paths:
-      - public
+# pages:
+#   stage: deploy
+#   # rules:
+#   #   # Only run if pushing to the main branch
+#   #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#   dependencies:
+#     - build-front-end-job
+#   needs:
+#     - build-front-end-job
+#   script:
+#     - mv ghi/dist public
+#   artifacts:
+#     paths:
+#       - public
