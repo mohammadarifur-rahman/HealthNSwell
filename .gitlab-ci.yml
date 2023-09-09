@@ -3,7 +3,7 @@ stages:
 
 build-front-end-job:
   stage: deploy
-  image: node:lts-bullseye
+  image: node:16.5.0
   script:
     - cd ghi
     - npm install
