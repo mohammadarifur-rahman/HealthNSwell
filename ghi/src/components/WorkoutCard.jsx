@@ -5,7 +5,7 @@ function WorkoutCard({ setCurrentWorkout, workout }) {
   const navigate = useNavigate();
   function handleSelectCard(selection) {
     setCurrentWorkout(selection);
-    navigate("/workouts/view");
+    navigate("/module3-project-gamma/workouts/view");
   }
 
   return (

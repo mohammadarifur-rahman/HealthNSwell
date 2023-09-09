@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/workouts");
+      navigate("/module3-project-gamma/workouts");
     }
     if (!token && click) {
       setTimeout(function () {
