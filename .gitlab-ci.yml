@@ -1,6 +1,13 @@
 build-front-end-job:
-  stage: deploy
   image: node:16.5.0
+  stage: deploy
+  cache:
+    key:
+      files:
+        - package-lock.json
+      prefix: npm
+    paths:
+      - node_modules/
   script:
     - cd ghi
     - npm install
