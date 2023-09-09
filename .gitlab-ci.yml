@@ -1,6 +1,3 @@
-stages:
-  - deploy # Run deploy after build
-
 build-front-end-job:
   stage: deploy
   image: node:16.5.0
