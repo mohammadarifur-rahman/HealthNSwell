@@ -23,7 +23,7 @@ lint-test-job:
 
 build-front-end-job:
   image: node:16.5.0
-  stage: deploy
+  stage: build
   cache:
     key:
       files:
