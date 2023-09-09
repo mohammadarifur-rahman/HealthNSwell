@@ -11,8 +11,8 @@ build-front-end-job:
   script:
     - cd ghi
     - npm install
-    - npm run build # Build the React application
+    - npm run build
     - cp -a dist/. public/
   artifacts:
     paths:
-      - ghi/dist/ # Save all of the files in the build path
+      - ghi/dist/
