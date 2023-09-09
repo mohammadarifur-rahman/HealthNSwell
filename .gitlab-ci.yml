@@ -7,7 +7,7 @@ build-front-end-job:
         - package-lock.json
       prefix: npm
     paths:
-      - node_modules/
+      - ghi/node_modules/
   script:
     - cd ghi
     - npm install
