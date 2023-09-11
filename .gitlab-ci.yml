@@ -26,7 +26,7 @@ lint-test-job:
 build-front-end-job:
   image: node:16.5.0
   variables:
-    VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
+    PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
     VITE_REACT_APP_API_HOST: https://may-7-et-api.mod3projects.com
   stage: build
   cache:
