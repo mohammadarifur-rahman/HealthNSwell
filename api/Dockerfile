@@ -14,4 +14,4 @@ COPY tests tests
 
 RUN python -m pip install -r requirements.txt
 
-CMD python -m migrations up && uvicorn main:app --host 0.0.0.0 --port 80
+CMD python -m migrations up && uvicorn main:app --host 0.0.0.0 --port 8000
