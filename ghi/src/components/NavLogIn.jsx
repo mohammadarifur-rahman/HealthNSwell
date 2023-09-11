@@ -10,7 +10,7 @@ function NavLogIn() {
   const navigate = useNavigate();
 
   const handleFirst = async (e) => {
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     if (tokenData) {
@@ -73,12 +73,6 @@ function NavLogIn() {
                       <span>Hello, {first}</span>
                     </button>
                     <ul className="dropdown-menu">
-                      {/* <li>
-                        <Link className="dropdown-item" to="#">
-                          {" "}
-                          <i className="bi bi-person-fill"></i>My Profile
-                        </Link>
-                      </li> */}
                       <li>
                         <div
                           className="dropdown-item sudo-link"

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Home.css";
 
 function NavSignUp() {
@@ -28,18 +28,14 @@ function NavSignUp() {
             >
               <ul className="navbar-nav ms-auto">
                 <li>
-                  <form action="/accounts">
-                    <button className="btn-sign" type="submit">
-                      Sign in
-                    </button>
-                  </form>
+                  <Link className="btn btn-sign" to="/accounts">
+                    Sign In
+                  </Link>
                 </li>
                 <li>
-                  <form action="/accounts/signup">
-                    <button className="btn" type="submit">
-                      Join Now
-                    </button>
-                  </form>
+                  <Link className="btn" to="/accounts/signup">
+                    Sign Up
+                  </Link>
                 </li>
               </ul>
             </div>

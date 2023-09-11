@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavLogIn from "./NavLogIn";
 import { useNavigate } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
+
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props;
   return (
@@ -21,6 +22,7 @@ function BootstrapInput(props) {
     </div>
   );
 }
+
 function WorkoutForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -28,6 +30,7 @@ function WorkoutForm() {
   const [activity_name, setActivityName] = useState("");
   const navigate = useNavigate();
   const { token } = useToken();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {};
@@ -35,12 +38,12 @@ function WorkoutForm() {
     data.description = description;
     data.duration = duration;
     data.activity_name = activity_name;
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
     data.account = accountId;
-    const workoutUrl = `${process.env.REACT_APP_API_HOST}/api/workouts/`;
+    const workoutUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/workouts/`;
     const fetchOptions = {
       method: "post",
       body: JSON.stringify(data),
@@ -55,6 +58,7 @@ function WorkoutForm() {
       navigate("/workouts");
     }
   };
+
   return (
     <div id="login">
       <NavLogIn />
@@ -67,7 +71,6 @@ function WorkoutForm() {
           className="row login-middle-row"
           onSubmit={(e) => handleSubmit(e)}
         >
-          {/* <div className="form-row"> */}
           <div className="column">
             <BootstrapInput
               id="workoutname"
@@ -108,7 +111,6 @@ function WorkoutForm() {
               type="text"
             />
           </div>
-          {/* </div> */}
           <div className="account-submit">
             <input
               className="btn btn-sing-up btn-login-page"

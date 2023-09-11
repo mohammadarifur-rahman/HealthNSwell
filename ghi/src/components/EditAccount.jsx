@@ -22,6 +22,7 @@ function BootstrapInput(props) {
     </div>
   );
 }
+
 function EditAccountForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -34,12 +35,13 @@ function EditAccountForm() {
   const { token } = useToken();
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+
   async function handleDeleteAccount() {
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
     const fetchOptions = {
       method: "delete",
       headers: {
@@ -52,6 +54,7 @@ function EditAccountForm() {
       navigate("/");
     }
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {};
@@ -71,17 +74,19 @@ function EditAccountForm() {
         "Content-Type": "application/json",
       },
     };
-    const tokenUrl = `${process.env.REACT_APP_API_HOST}/token`;
+
+    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${process.env.REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
     const accountResponse = await fetch(accountUrl, fetchOptions);
     if (accountResponse.ok) {
       e.target.reset();
       setSuccess(true);
     }
   };
+  
   return (
     <div id="login">
       <NavLogIn />

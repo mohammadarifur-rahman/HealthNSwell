@@ -1,6 +1,5 @@
 steps = [
     [
-        ## Create the table
         """
         CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
@@ -14,7 +13,6 @@ steps = [
             hashed_password VARCHAR(1000) NOT NULL
         );
         """,
-        ## Drop the table
         """
         DROP TABLE accounts;
         """

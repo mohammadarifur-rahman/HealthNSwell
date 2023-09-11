@@ -10,17 +10,16 @@ import { AuthProvider, useAuthContext } from "@galvanize-inc/jwtdown-for-react";
 import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
-  // mdn regex -- [s] not working
   const domain = /https?:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, "");
-  const baseUrl = process.env.REACT_APP_API_HOST;
+  const basename = import.meta.env.VITE_PUBLIC_URL.replace(domain, "");
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_HOST;
 
   const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", "");
 
   function ProtectedRoute({ element }) {
     const { token } = useAuthContext();
     if (!token) {
-      return <Navigate to="/" replace />;
+      return <Navigate to="" replace />;
     }
     return element;
   }
@@ -29,7 +28,7 @@ function App() {
     <BrowserRouter basename={basename}>
       <AuthProvider baseUrl={baseUrl}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="" element={<Home />} />
 
           <Route path="accounts">
             <Route index element={<LoginForm />} />
