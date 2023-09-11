@@ -28,6 +28,7 @@ build-front-end-job:
   variables:
     PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
     VITE_REACT_APP_API_HOST: https://may-7-et-api.mod3projects.com
+    CORS_HOST: https://the-stay-at-homies.gitlab.io/module3-project-gamma
   stage: build
   cache:
     key:
@@ -49,7 +50,9 @@ build-front-end-job:
 
 build-api-image:
   stage: build
-  image: docker:git
+  image: docker
+  services:
+    - docker:git
   variables:
     GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/api
   before_script:
