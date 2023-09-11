@@ -27,7 +27,7 @@ build-front-end-job:
   image: node:16.5.0
   variables:
     VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/module3-project-gamma
-    VITE_REACT_APP_API_HOST: http://localhost:8000
+    VITE_REACT_APP_API_HOST: https://may-7-et-api.mod3projects.com
   stage: build
   cache:
     key:
@@ -44,8 +44,8 @@ build-front-end-job:
   artifacts:
     paths:
       - ghi/dist/
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  # rules:
+  #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 build-api-image:
   stage: build
@@ -62,8 +62,8 @@ build-api-image:
 
 pages:
   stage: deploy
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  # rules:
+  #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   dependencies:
     - build-front-end-job
   needs:
