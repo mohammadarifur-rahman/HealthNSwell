@@ -37,11 +37,11 @@ function EditAccountForm() {
   const navigate = useNavigate();
 
   async function handleDeleteAccount() {
-    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
     const fetchOptions = {
       method: "delete",
       headers: {
@@ -75,18 +75,18 @@ function EditAccountForm() {
       },
     };
 
-    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
-    const accountUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
+    const accountUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/accounts/${accountId}/`;
     const accountResponse = await fetch(accountUrl, fetchOptions);
     if (accountResponse.ok) {
       e.target.reset();
       setSuccess(true);
     }
   };
-  
+
   return (
     <div id="login">
       <NavLogIn />

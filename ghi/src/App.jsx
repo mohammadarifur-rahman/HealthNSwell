@@ -11,8 +11,8 @@ import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
   const domain = /https?:\/\/[^/]+/;
-  const basename = import.meta.env.PUBLIC_URL.replace(domain, "");
-  const baseUrl = import.meta.env.VITE_REACT_APP_API_HOST;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
+  const baseUrl = process.env.VITE_REACT_APP_API_HOST;
 
   const [currentWorkout, setCurrentWorkout] = useLocalStorage("workout", "");
 

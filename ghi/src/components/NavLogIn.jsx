@@ -10,7 +10,7 @@ function NavLogIn() {
   const navigate = useNavigate();
 
   const handleFirst = async (e) => {
-    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     if (tokenData) {
