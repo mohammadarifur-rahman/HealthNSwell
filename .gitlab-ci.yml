@@ -57,6 +57,9 @@ build-api-image:
 
 pages:
   stage: deploy
+  # rules:
+  #   # Only run if pushing to the main branch
+  #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   dependencies:
     - build-front-end-job
   needs:
