@@ -1,6 +1,3 @@
-services:
-  - docker:dind
-
 stages:
   - test
   - build
@@ -44,8 +41,6 @@ build-front-end-job:
   artifacts:
     paths:
       - ghi/dist/
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 build-api-image:
   stage: build
@@ -62,8 +57,6 @@ build-api-image:
 
 pages:
   stage: deploy
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   dependencies:
     - build-front-end-job
   needs:
