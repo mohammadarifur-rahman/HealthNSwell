@@ -12,7 +12,7 @@ function WorkoutList({ setCurrentWorkout }) {
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
 
-    const url = `http://localhost:8000/api/workouts/${accountId}`;
+    const url = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/workouts/${accountId}`;
     const response = await fetch(url, { credentials: "include" });
     if (response.ok) {
       const data = await response.json();
