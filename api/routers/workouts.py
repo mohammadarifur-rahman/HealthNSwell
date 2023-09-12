@@ -6,7 +6,7 @@ from queries.workouts import Error, WorkoutIn, WorkoutRepository, WorkoutOut
 router = APIRouter()
 
 
-@router.post("/", response_model=Union[WorkoutOut, Error])
+@router.post("", response_model=Union[WorkoutOut, Error])
 async def create_workouts(
     workout: WorkoutIn,
     repo: WorkoutRepository = Depends(),

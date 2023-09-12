@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavSignUp from "./NavSignUp";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 
 function BootstrapInput(props) {
@@ -116,11 +116,11 @@ function AccountForm() {
         </form>
         <div className="login-header login-footer">
           <p>Already have an Account?</p>
-          <form action="/accounts">
-            <button className="btn btn-sing-up" type="submit">
-              Sign in
-            </button>
-          </form>
+            <Link to="/accounts">
+              <button className="btn btn-sing-up" type="submit">
+                Sign in
+              </button>
+            </Link>
         </div>
       </div>
     </div>

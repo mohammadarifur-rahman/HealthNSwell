@@ -1,7 +1,7 @@
 import useToken from "@galvanize-inc/jwtdown-for-react";
 import { useState, useEffect } from "react";
 import NavSignUp from "./NavSignUp";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -70,11 +70,11 @@ const LoginForm = () => {
         </form>
         <div className="login-header login-footer">
           <p>Do not have an Account? Create an Account</p>
-          <form action="/accounts/signup">
+          <Link to="/accounts/signup">
             <button className="btn btn-sing-up" type="submit">
               Sign up
             </button>
-          </form>
+          </Link>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ from queries.exercises import (
 router = APIRouter()
 
 
-@router.post("/", response_model=Union[ExerciseOut, Error])
+@router.post("", response_model=Union[ExerciseOut, Error])
 async def create_exercises(
     exercise: ExerciseIn,
     repo: ExerciseRepository = Depends(),

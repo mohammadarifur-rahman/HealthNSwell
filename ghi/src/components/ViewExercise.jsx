@@ -111,8 +111,6 @@ function ViewExercise({ currentWorkout }) {
     setExerciseRestBetweenExercises(value);
   };
 
-  // create NewExercise ----------------------
-
   async function handleCreateExercise() {
     const data = {};
 
