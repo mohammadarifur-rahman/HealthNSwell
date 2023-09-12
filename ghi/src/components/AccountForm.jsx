@@ -38,7 +38,7 @@ function AccountForm() {
     data.first_name = firstname;
     data.last_name = lastname;
     data.password = password;
-    const accountUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/accounts/`;
+    const accountUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/accounts`;
     const fetchOptions = {
       method: "post",
       body: JSON.stringify(data),

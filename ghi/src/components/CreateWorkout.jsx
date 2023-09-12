@@ -43,7 +43,7 @@ function WorkoutForm() {
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
     data.account = accountId;
-    const workoutUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/workouts/`;
+    const workoutUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/workouts`;
     const fetchOptions = {
       method: "post",
       body: JSON.stringify(data),
