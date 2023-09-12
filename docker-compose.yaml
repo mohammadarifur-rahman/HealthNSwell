@@ -12,9 +12,9 @@ services:
       WAIT_HOSTS: db:5432
     build:
       context: api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
-      - 80:80
+      - 8000:8000
     volumes:
       - ./api:/app
 
