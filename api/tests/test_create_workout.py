@@ -66,7 +66,7 @@ def test_create_workout():
         "activity_name": "string",
         "account": 0,
     }
-    response = client.post("/api/workouts/", json=json)
+    response = client.post("/api/workouts", json=json)
     assert response.status_code == 200
     assert response.json() == expected
     app.dependency_overrides = {}
