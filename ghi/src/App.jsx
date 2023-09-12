@@ -28,7 +28,7 @@ function App() {
     <BrowserRouter basename={basename}>
       <AuthProvider baseUrl={baseUrl}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="" element={<Home />} />
 
           <Route path="accounts">
             <Route index element={<LoginForm />} />
