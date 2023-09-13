@@ -13,7 +13,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma">
+  <a href="https://gitlab.com/the-stay-at-homies/health-and-swollenness">
     <img src="ghi/public/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -23,14 +23,14 @@
     Welcome to a new era of Health and Swollenness, where your journey to a healthier, fitter you begins at your fingertips. We are thrilled to introduce our revolutionary health and wellness application designed to empower you on your quest for a stronger, happier, and more energetic life. Say goodbye to fitness confusion and hello to a user-friendly, personalized approach to exercise.
     <br />
     <br />
-    <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/blob/main/README.md?ref_type=heads"><strong>Explore the docs »</strong></a>
+    <a href="https://gitlab.com/the-stay-at-homies/health-and-swollenness/-/blob/main/README.md?ref_type=heads"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/blob/main/README.md?ref_type=heads">View Demo</a>
+    <a href="https://gitlab.com/the-stay-at-homies/health-and-swollenness/-/blob/main/README.md?ref_type=heads">View Demo</a>
     ·
-    <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/issues">Report Bug</a>
+    <a href="https://gitlab.com/the-stay-at-homies/health-and-swollenness/-/issues">Report Bug</a>
     ·
-    <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/issues">Request Feature</a>
+    <a href="https://gitlab.com/the-stay-at-homies/health-and-swollenness/-/issues">Request Feature</a>
   </p>
 </div>
 
@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Project Name Screen Shot][project-screenshot]](https://the-stay-at-homies.gitlab.io/module3-project-gamma)
+[![Project Name Screen Shot][project-screenshot]](https://the-stay-at-homies.gitlab.io/health-and-swollenness)
 
 At the core of our application is the ability to craft and customize exercise routines that perfectly align with your unique needs, preferences, and goals. Gone are the days of generic workout plans that leave you feeling uninspired. With our intuitive interface, you can create tailored routines that cater to your fitness level, equipment availability, and time constraints, ensuring every workout is both effective and enjoyable.
 
@@ -96,7 +96,7 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 
 ### Installation
 
-1. Fork and clone the [repository](https://gitlab.com/the-stay-at-homies/module3-project-gamma)
+1. Fork and clone the [repository](https://gitlab.com/the-stay-at-homies/health-and-swollenness)
 
 2. Rename the .env.sample file to .env
 
@@ -123,7 +123,7 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 - [ ] Add websocket group chat
 - [ ] Add third part API for estimated calories burned
 
-See the [open issues](https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/issues/?sort=created_date&state=opened&first_page_size=20) for a full list of proposed features (and known issues).
+See the [open issues](https://gitlab.com/the-stay-at-homies/health-and-swollenness/-/issues/?sort=created_date&state=opened&first_page_size=20) for a full list of proposed features (and known issues).
 
 
 

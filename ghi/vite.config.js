@@ -12,5 +12,5 @@ export default defineConfig({
     strictPort: true,
     port: 3000,
   },
-  base: "/module3-project-gamma",
+  base: "/health-and-swollenness",
 })

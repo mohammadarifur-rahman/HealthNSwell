@@ -1,0 +1,81 @@
+services:
+  - docker:dind
+
+stages:
+  - test
+  - build
+  - deploy
+
+api-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd api
+    - pip install -r requirements.txt
+    - export DATABASE_URL='postgresql://example_user:secret@db/example'
+    - export SIGNING_KEY='764x4xdrgjie9277klk2tx32glwcblec3xar23b5'
+    - python -m pytest
+
+lint-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - pip install flake8
+    - flake8 api
+
+build-front-end-job:
+  image: node:16.5.0
+  variables:
+    CORS_HOST: https://the-stay-at-homies.gitlab.io/health-and-swollenness
+    VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/health-and-swollenness
+    # # for deployed backend
+    # VITE_REACT_APP_API_HOST: https://may-7-et-api.mod3projects.com
+    # for local backend
+    VITE_REACT_APP_API_HOST: http://localhost:8000
+  stage: build
+  cache:
+    key:
+      files:
+        - package-lock.json
+      prefix: npm
+    paths:
+      - ghi/node_modules/
+  script:
+    - cd ghi
+    - npm install
+    - npm run build
+    - cp dist/index.html dist/404.html
+  artifacts:
+    paths:
+      - ghi/dist/
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+build-api-image:
+  stage: build
+  image: docker
+  services:
+    - docker:git
+  variables:
+    GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/api
+  before_script:
+    - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
+  script:
+    - docker build --tag $GITLAB_IMAGE:latest ./api
+    - docker push $GITLAB_IMAGE:latest
+  only:
+    - main
+
+pages:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  dependencies:
+    - build-front-end-job
+  needs:
+    - build-front-end-job
+  script:
+    - mv ghi/dist public
+  artifacts:
+    paths:
+      - public
