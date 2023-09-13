@@ -1,6 +1,9 @@
 ## 11-13 Sep 2023
 
+.
+
 List of features
+
 - fix bugs edit application to front end
 - fix bugs and edit application to deploy backend
 - fix broken readme links
@@ -8,12 +11,12 @@ List of features
 ## 7-8 Sep 2023
 
 List of features
+
 - fix app to make sure windows users are not receiving any errors
 - create readme.md
 - add favicon.ico
 - start app deployment steps
 - switched to vite + react application for front end
-
 
 ## 6 Sep 2023
 
@@ -27,7 +30,6 @@ List of features
 
 Ah-ha
 We needed to make our own function for the protected routes.
-
 
 ## 5 Sep 2023
 
