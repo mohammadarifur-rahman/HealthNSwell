@@ -19,7 +19,7 @@ function ViewExercise({ currentWorkout }) {
   const [badReq, setBadReq] = useState(false);
 
   async function loadExercises() {
-    const url = `${process.env.VITE_REACT_APP_API_HOST}/api/exercises/${currentWorkout.id}`;
+    const url = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/exercises/${currentWorkout.id}`;
     const response = await fetch(url, { credentials: "include" });
     if (response.ok) {
       const data = await response.json();
@@ -33,7 +33,7 @@ function ViewExercise({ currentWorkout }) {
 
   async function handleDeleteExercise(id) {
     setBadReq(false);
-    const exerciseUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/exercises/${id}`;
+    const exerciseUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/exercises/${id}`;
     const fetchOptions = {
       method: "delete",
       headers: {
@@ -63,7 +63,7 @@ function ViewExercise({ currentWorkout }) {
     data.rest_between_exercises = exerciseRestBetweenExercises;
     data.workout = workoutId;
 
-    const exerciseUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/exercises/${id}`;
+    const exerciseUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/exercises/${id}`;
     const fetchOptions = {
       method: "put",
       body: JSON.stringify(data),
@@ -122,7 +122,7 @@ function ViewExercise({ currentWorkout }) {
     data.rest_between_exercises = exerciseRestBetweenExercises;
     data.workout = currentWorkout.id;
 
-    const exerciseUrl = `${process.env.VITE_REACT_APP_API_HOST}/api/exercises`;
+    const exerciseUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/exercises`;
     const fetchOptions = {
       method: "post",
       body: JSON.stringify(data),

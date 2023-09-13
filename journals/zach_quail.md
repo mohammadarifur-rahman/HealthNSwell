@@ -1,6 +1,13 @@
+## 11-13 Sep 2023
+
+List of features
+- fix bugs edit application to front end
+- fix bugs and edit application to deploy backend
+- fix broken readme links
+
 ## 7-8 Sep 2023
 
-List of feature
+List of features
 - fix app to make sure windows users are not receiving any errors
 - create readme.md
 - add favicon.ico
@@ -9,7 +16,7 @@ List of feature
 
 ## 6 Sep 2023
 
-List of feature
+List of features
 
 - Protected routes in App.js
 - Added CSS for Home page
@@ -23,7 +30,7 @@ We needed to make our own function for the protected routes.
 
 ## 5 Sep 2023
 
-List of feature
+List of features
 
 - Refactored application for deployment
 
@@ -32,7 +39,7 @@ Deployment present many challenges.
 
 ## 30 Aug 2023
 
-List of feature
+List of features
 
 - Modified the Home.css and added necessary styling for ViewWorkout and ListWorkout
 - Fixed WorkoutsList to filter by account id
@@ -43,7 +50,7 @@ Can easily change text color and background with Boostrap.
 
 ## 25-29 Aug 2023
 
-List of feature
+List of features
 
 - Added ViewWorkout page
 - Added ViewExersice

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavSignUp from "./NavSignUp";
 import ExampleWorkout from "./ExampleWorkout";
 import "./Home.css";
@@ -22,11 +23,11 @@ function Home() {
                 routines tailored to your fitness goals.
               </h4>
             </div>
-            <form action="/accounts/signup">
+            <Link to="/accounts">
               <button className="btn btn-sing-up" type="submit">
                 Join Now
               </button>
-            </form>
+            </Link>
           </div>
         </div>
       </section>

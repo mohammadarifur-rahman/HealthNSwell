@@ -7,12 +7,12 @@ function WorkoutList({ setCurrentWorkout }) {
   const [workoutList, setWorkoutList] = useState([]);
 
   async function loadWorkoutList() {
-    const tokenUrl = `${process.env.VITE_REACT_APP_API_HOST}/token`;
+    const tokenUrl = `${import.meta.env.VITE_REACT_APP_API_HOST}/token`;
     const tokenResponse = await fetch(tokenUrl, { credentials: "include" });
     const tokenData = await tokenResponse.json();
     const accountId = tokenData.account.id;
 
-    const url = `${process.env.VITE_REACT_APP_API_HOST}/api/workouts/${accountId}`;
+    const url = `${import.meta.env.VITE_REACT_APP_API_HOST}/api/workouts/${accountId}`;
     const response = await fetch(url, { credentials: "include" });
     if (response.ok) {
       const data = await response.json();

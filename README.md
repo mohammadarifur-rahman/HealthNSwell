@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma">
-    <img src="ghi/public/logo.svg" alt="Logo" width="80" height="80">
+    <img src="logo.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Health and Swollenness</h3>
@@ -28,9 +28,9 @@
     <br />
     <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/blob/main/README.md?ref_type=heads">View Demo</a>
     ·
-    <a href="https://gitlab.com/WayneBasile/mod-readme/-/issues">Report Bug</a>
+    <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/issues">Report Bug</a>
     ·
-    <a href="https://gitlab.com/WayneBasile/mod-readme/-/issues">Request Feature</a>
+    <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma/-/issues">Request Feature</a>
   </p>
 </div>
 
@@ -43,7 +43,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-      <li><a href="#design">Built With</a></li>
+      <li><a href="#design">Design</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -55,7 +55,6 @@
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -97,7 +96,7 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 
 ### Installation
 
-1. Clone the [repository](https://gitlab.com/the-stay-at-homies/module3-project-gamma)
+1. Fork and clone the [repository](https://gitlab.com/the-stay-at-homies/module3-project-gamma)
 
 2. Rename the .env.sample file to .env
 
@@ -128,26 +127,6 @@ See the [open issues](https://gitlab.com/the-stay-at-homies/module3-project-gamm
 
 
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the project
-
-2. Create your feature branch `git checkout -b feature/AmazingFeature`
-
-3. Commit your changes `git commit -m 'Add some AmazingFeature'`
-
-4. Push to the branch `git push origin feature/AmazingFeature`
-
-5. Open a [merge request](https://gitlab.com/WayneBasile/mod-readme/-/merge_requests)
-
-
-
 <!-- CONTACT -->
 ## Contact
 
@@ -174,7 +153,7 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[project-screenshot]: ghi/public/screenshot.png
+[project-screenshot]: screenshot.png
 
 [Fastapi.tiangolo.com]: https://img.shields.io/badge/Fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com/
