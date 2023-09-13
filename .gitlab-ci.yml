@@ -28,8 +28,6 @@ build-front-end-job:
   variables:
     CORS_HOST: https://the-stay-at-homies.gitlab.io/health-and-swollenness
     VITE_PUBLIC_URL: https://the-stay-at-homies.gitlab.io/health-and-swollenness
-    # # for deployed backend
-    # VITE_REACT_APP_API_HOST: https://may-7-et-api.mod3projects.com
     # for local backend
     VITE_REACT_APP_API_HOST: http://localhost:8000
   stage: build
