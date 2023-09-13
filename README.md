@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://gitlab.com/the-stay-at-homies/module3-project-gamma">
-    <img src="logo.svg" alt="Logo" width="80" height="80">
+    <img src="ghi/public/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Health and Swollenness</h3>
@@ -153,7 +153,7 @@ See the [open issues](https://gitlab.com/the-stay-at-homies/module3-project-gamm
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[project-screenshot]: screenshot.png
+[project-screenshot]: ghi/public/screenshot.png
 
 [Fastapi.tiangolo.com]: https://img.shields.io/badge/Fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com/
