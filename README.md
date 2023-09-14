@@ -124,9 +124,11 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 
 3. Uncomment local backend VITE_REACT_API_HOST in .gitlab-ci.yml
 
-4. Add CI/CD VITE_PUBLIC_URL variable and update VITE_REACT_API_HOST variable to http://localhost:8000
+4. Add CI/CD VITE_PUBLIC_URL variable
 
-5. Push changes to repository
+5. Update VITE_REACT_API_HOST variable to http://localhost:8000
+
+6. Push changes to repository
 
 ### Deploy Application
 
@@ -134,11 +136,13 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 
 1. Uncomment remote backend VITE_REACT_API_HOST in .gitlab-ci.yml
 
-2. Add CI/CD SIGNING_KEY and DATABASE_URL variables and update CI/CD VITE_REACT_API_HOST variable to cloud provider URL
+2. Add CI/CD SIGNING_KEY and DATABASE_URL variables
 
-3. Push changes to repository
+3. Update CI/CD VITE_REACT_API_HOST variable to cloud provider URL
 
-4. Deploy backend with cloud provider
+4. Push changes to repository
+
+5. Deploy backend with cloud provider
 
 
 
