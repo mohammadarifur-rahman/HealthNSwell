@@ -1,9 +1,6 @@
 ## 11-13 Sep 2023
 
-.
-
 List of features
-
 - fix bugs edit application to front end
 - fix bugs and edit application to deploy backend
 - fix broken readme links

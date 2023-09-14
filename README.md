@@ -51,7 +51,9 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#local-installation">Installation</a></li>
+        <li><a href="#deploy-frontend">Deploy Frontend</a></li>
+        <li><a href="#deploy-application">Deploy Application</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -94,7 +96,7 @@ If you don't have these (or equivalent) software, please install them before pro
 
 To get a local copy of Health and Swolleness up and running on your machine follow these simple steps.
 
-### Installation
+### Local Installation
 
 1. Fork and clone the [repository](https://gitlab.com/the-stay-at-homies/health-and-swollenness)
 
@@ -111,6 +113,32 @@ To get a local copy of Health and Swolleness up and running on your machine foll
 7. Run `docker compose up`
 
 8. Navigate to [localhost:3000](http://localhost:3000/)
+
+### Deploy Frontend
+
+0. Complete Local Installation instructions
+
+1. Add .gitlab-ci.yml file
+
+2. Uncomment remote frontend VITE_PUBLIC_URL in .env
+
+3. Uncomment local backend VITE_REACT_API_HOST in .gitlab-ci.yml
+
+4. Update CI/CD variables and update VITE_REACT_API_HOST variable to http://localhost:8000
+
+5. Push changes to repository
+
+### Deploy Application
+
+0. Complete Deploy Frontend instructions
+
+1. Uncomment remote backend VITE_REACT_API_HOST in .gitlab-ci.yml
+
+2. Update CI/CD VITE_REACT_API_HOST variable to cloud provider URL
+
+3. Push changes to repository
+
+4. Update CI/CD variables and deploy backend with cloud provider
 
 
 
