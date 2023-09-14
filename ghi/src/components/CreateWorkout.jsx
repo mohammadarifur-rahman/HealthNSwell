@@ -74,7 +74,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="workoutname"
-              placeholder="Beginner Full Body Circuit"
+              placeholder="Name"
               labelText="Workout name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -84,7 +84,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="description"
-              placeholder="Warm-up, Circuit & Cooldown "
+              placeholder="Description"
               labelText="Workout description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -94,7 +94,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="workoutduration"
-              placeholder="1hr 15mins"
+              placeholder="Duration"
               labelText="Workout duration"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
@@ -104,7 +104,7 @@ function WorkoutForm() {
           <div className="column">
             <BootstrapInput
               id="activityname"
-              placeholder="Full Body Circuit"
+              placeholder="Activity Type"
               labelText="Activity name"
               value={activity_name}
               onChange={(e) => setActivityName(e.target.value)}
