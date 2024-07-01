@@ -162,9 +162,7 @@ See the [open issues](https://gitlab.com/the-stay-at-homies/health-and-swollenne
 <!-- CONTACT -->
 ## Contact
 
-[![Contributors][wayne-shield]][wayne-url] &nbsp; [![Contributors][tom-shield]][tom-url]
-
-[![Contributors][zach-shield]][zach-url] &nbsp; [![Contributors][mohammad-shield]][mohammad-url]
+[![Contributors][mohammad-shield]][mohammad-url]
 
 
 
@@ -213,15 +211,6 @@ See the [open issues](https://gitlab.com/the-stay-at-homies/health-and-swollenne
 
 [ReactRouter.com]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white
 [ReactRouter-url]: https://reactrouter.com/en/main
-
-[wayne-shield]: https://img.shields.io/badge/Wayne_Basile-0A66C2?logo=linkedin&style=for-the-badge
-[wayne-url]: https://www.linkedin.com/in/waynebasile/
-
-[zach-shield]: https://img.shields.io/badge/Zach_Quail-0A66C2?logo=linkedin&style=for-the-badge
-[zach-url]: https://www.linkedin.com/in/zach-quail-2a7b8585/
-
-[tom-shield]: https://img.shields.io/badge/Tom_Perry-0A66C2?logo=linkedin&style=for-the-badge
-[tom-url]: https://www.linkedin.com/in/tomperry718/
 
 [mohammad-shield]: https://img.shields.io/badge/Mohammad_Rahman-0A66C2?logo=linkedin&style=for-the-badge
 [mohammad-url]: https://www.linkedin.com/in/marahman4748/
